@@ -1,7 +1,8 @@
 
 var app = angular.module('PB', ['firebase','ngAnimate', 'ui.bootstrap']);
 var owner = "";
-var temp = "https://petbookkdh.firebaseio.com/";
+//var temp = "https://petbookkdh.firebaseio.com/";
+var temp = "https://hypb.firebaseio.com/";
 var firebaseURL;
 var name;
 var picture;
@@ -36,6 +37,10 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
 		var def = new Firebase(temp);
 		$scope.default = $firebaseArray(def);
+
+		var human = temp + "allpost";
+		var timeline = new Firebase(human);
+		$scope.timeline = $firebaseArray(timeline);
 
 		// Login 안되어 있을 때는 기본적인 FirebaseURL
 		if (owner == "") firebaseURL = temp;
@@ -73,11 +78,31 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			console.log(firebaseURL);
 		}
 
+		// 일반 로그인
+		$scope.signin = function () {
+			var ref = new Firebase(temp);
+			ref.authWithPassword({
+			  email    : $scope.userid,
+			  password : $scope.userpw
+			}, function(error, authData) {
+			  if (error) {
+			    console.log("Login Failed!", error);
+
+			  } else {
+			    console.log("Authenticated successfully with payload:", authData);
+					owner = authData.uid;
+					firebaseURL = temp + owner;
+					//location.href="timeline_page.html";
+			  }
+			});
+		}
 		// firebaseURL 안의 내용물 불러오기 (아직 써먹지 않음)
     $scope.getList = function() {
     	var echoRef = new Firebase(firebaseURL);
   		var query = echoRef.orderByChild("url");
   		$scope.profileArr = $firebaseArray(query);
+
+			$scope.timeline;
     };
 
 		// 입력받은 동물의 이름, 프로필 사진을 firebase에 저장
@@ -118,6 +143,14 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 						//like:
 
 			}).then( function() {
+				$scope.timeline.$add({
+					name: name,
+					picture: picture,
+					post: $scope.post,
+					id: owner,
+					time: Date()
+				});
+
 				$scope.post = "";
 			});
 
@@ -161,8 +194,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       ref.authWithOAuthPopup("facebook", function(error, authData) {
 	      if (error) {
 	        console.log("Login Failed!", error);
-	      } 
-	      else {
+	      } else {
 	        $scope.$apply(function() {
 		        $scope.$authData = authData;
 						owner = $scope.$authData.facebook.id;
@@ -257,7 +289,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
           return $scope.items;
         }
       }
-      
+
     });
 
     modalInstance.result.then(function (selectedItem) {
@@ -281,10 +313,27 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
   };
 
   $scope.ok = function () {
+		var ref = new Firebase(temp);
+		ref.createUser({
+		  email    : $scope.user_email,
+		  password : $scope.user_password
+		}, function(error, userData) {
+		  if (error) {
+		    console.log("Error creating user:", error);
+		  } else {
+		    console.log("Successfully created user account with uid:", userData.uid);
+		  }
+		});
     $uibModalInstance.close($scope.selected.item);
   };
 
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
+  };
+});
+
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
   };
 });
