@@ -125,9 +125,9 @@
                        </div>
 
                       <!-- post contents -->
-                      <div class="full col-sm-6 col-sm-offset-3 ">
+                      <div ng-repeat="post in timeline | reverse" class="col-sm-6 col-sm-offset-3 ">
                         <div class="well">
-                           <div ng-repeat="post in timeline | reverse">
+                           <div>
                              <img src="{{post.picture}}" width=50 height=50 />&nbsp;{{post.name}}<br/>
                              {{post.post}}<br />
                              {{post.time}}<br />
