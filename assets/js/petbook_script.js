@@ -161,7 +161,8 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       ref.authWithOAuthPopup("facebook", function(error, authData) {
 	      if (error) {
 	        console.log("Login Failed!", error);
-	      } else {
+	      } 
+	      else {
 	        $scope.$apply(function() {
 		        $scope.$authData = authData;
 						owner = $scope.$authData.facebook.id;
