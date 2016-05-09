@@ -121,12 +121,14 @@
                        </div>
 
                       <!-- post contents -->
-                      <div class="well">
-                         <div ng-repeat="post in timeline | reverse">
-                           <img src="{{post.picture}}" width=50 height=50 />&nbsp;{{post.name}}<br/>
-                           {{post.post}}<br />
-                           {{post.time}}<br />
-                         </div>
+                      <div class="full col-sm-6 col-sm-offset-3 ">
+                        <div class="well">
+                           <div ng-repeat="post in timeline | reverse">
+                             <img src="{{post.picture}}" width=50 height=50 />&nbsp;{{post.name}}<br/>
+                             {{post.post}}<br />
+                             {{post.time}}<br />
+                           </div>
+                        </div>
                       </div>
                       <!-- post contents end -—>
 
