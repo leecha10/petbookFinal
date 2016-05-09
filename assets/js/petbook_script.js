@@ -1,8 +1,8 @@
 
 var app = angular.module('PB', ['firebase','ngAnimate', 'ui.bootstrap']);
 var owner = "";
-//var temp = "https://petbookkdh.firebaseio.com/";
-var temp = "https://hypb.firebaseio.com/";
+var temp = "https://petbookkdh.firebaseio.com/";
+//var temp = "https://hypb.firebaseio.com/";
 var firebaseURL;
 var name;
 var picture;
