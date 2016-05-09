@@ -24,7 +24,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
 	</head>
-	<body ng-app="PB" ng-controller="Ctrl">
+<body ng-app="PB" ng-controller="Ctrl">
 
 <div class="wrapper">
     <div class="box">
@@ -120,9 +120,15 @@
                         </div>
                        </div>
 
-                       <!-- post contents -->
-                 
-                        <!-- post contents end -—>
+                      <!-- post contents -->
+                      <div class="well">
+                         <div ng-repeat="post in timeline | reverse">
+                           <img src="{{post.picture}}" width=50 height=50 />&nbsp;{{post.name}}<br/>
+                           {{post.post}}<br />
+                           {{post.time}}<br />
+                         </div>
+                      </div>
+                      <!-- post contents end -—>
 
 
                 </div> <!--/padding -->
