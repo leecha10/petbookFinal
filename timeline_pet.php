@@ -7,70 +7,48 @@
     <title>Petbook - sns for your lovely pet</title>
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-      <!--<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
 
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/styles.css" rel="stylesheet">
     <link href="assets/css/styles_pethouse.css" rel="stylesheet">
-  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-  <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
-    <!-- script references -->
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js" ></script>
-
-  <!-- Min VS original -->
-<script src="assets/js/firebase.js"></script>
-<script src="assets/js/angular.min.js"></script>
-<script src="assets/js/angularfire.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
-<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
-
+    <script src="assets/js/firebase.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/angularfire.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
+    <script src="assets/js/petbook_script.js"></script>
 
 
-  <!-- Angular -->
-<!-- <script src="assets/js/app.js" type="text/javascript"></script> -->
+    <style>
+      .file_input_button{
+          width: 100px;
+          /*position: absolute;*/
+          top: 0px;
+          background-color: #33BB00;
+          color: #FFFFFF;
+          border-style: solid;
+      }
 
-<script src="assets/js/forpet.js" type="text/javascript"></script>
+      .file_input_hidden{
+          opacity: 0;
+          background-size: 50px;
+          width: 50px;
+          height:50px;
+      }
 
-
-<!-- AngualrJS directives -->
-<script src="assets/js/ng-file-upload-shim.min.js"></script>
-<script src="assets/js/ng-file-upload.min.js"></script>
-
-<!-- <script src="http://code.angularjs.org/1.1.5/angular.min.js"></script> -->
-        <script src="assets/js/angular-file-upload.js"></script>
-
-        <!--thumbnails for images-->
-        <script src="assets/js/petbook_script.js"></script>
-
-<!-- AngularJS factory -->
-<!-- <script src="assets/js/fileRW.js"></script> -->
-<style>
-
-            .file_input_button{
-                width: 100px;
-                /*position: absolute;*/
-                top: 0px;
-                background-color: #33BB00;
-                color: #FFFFFF;
-                border-style: solid;
-            }
-
-            .file_input_hidden{
-                opacity: 0;
-                background-size: 50px;
-                width: 50px;
-                height:50px;
-            }
-
-            .button{
-                background-image: url("assets/img/backgrounds/uploadPic.jpg");
-                background-size: 50px;
-                width: 50px;
-                height:50px;
-            }
-        </style>
+      .button{
+          background-image: url("assets/img/backgrounds/uploadPic.jpg");
+          background-size: 50px;
+          width: 50px;
+          height:50px;
+      }
+    </style>
   </head>
   <body>
 <div class="wrapper">
