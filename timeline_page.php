@@ -13,6 +13,7 @@
 
 
   <link href="assets/css/styles.css" rel="stylesheet">
+   <link href="assets/css/timeline_page.css" rel="stylesheet">
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
   <!-- Min VS original -->
@@ -71,7 +72,6 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-align-justify"></i></a>
                         <ul class="dropdown-menu">
                           <li><a ng-click="FBLogout()">Logout</a></li>
-
                         </ul>
                       </li>
                     </ul>
@@ -135,13 +135,28 @@
                       </div>
 
                       <!-- post contents -->
+                
+
                       <div ng-repeat="post in timeline | reverse" class="col-sm-6 col-sm-offset-3 ">
                         <div class="well">
-                           <div>
-                             <img src="{{post.picture}}" width=50 height=50 />&nbsp;{{post.name}}<br/>
-                             {{post.post}}<br />
-                             {{post.time}}<br />
-                           </div>
+                          <div class="post_image">
+                            <img src="{{post.picture}}" width=50 height=50 />
+                          </div>
+                          <div class="post_name">
+                            {{post.name}}
+                          </div>
+                          <div class="post_time">
+                            {{post.time}}
+                          </div>
+                          <div class="post_content">
+                            {{post.post}}
+                          </div> 
+                          <hr>
+                          <div>
+                            <a><i class="glyphicon glyphicon-heart-empty"></i></a>
+                            <a ng-click="open()"><i class="glyphicon glyphicon-chat"></i></a>  
+                          </div>
+                                
                         </div>
                       </div>
                       <!-- post contents end -—>
@@ -158,29 +173,39 @@
 
 
 <!--post modal-->
-<div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-  <div class="modal-content">
+<div ng-controller="ModalDemoCtrl">
+  <script type="text/ng-template" id="myModalContent.html">
       <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			Update Status
+          <h3 class="modal-title">Sign up on Petbook</h3>
       </div>
       <div class="modal-body">
-          <form class="form center-block">
-            <div class="form-group">
-              <textarea class="form-control input-lg" autofocus="" placeholder="What do you want to share?"></textarea>
-            </div>
+          <form>
+              <div class="form-group">
+                <label class="modal-label" for="input_user_name">이름</label>
+                <input ng-model="user_name" type="text" class="form-control pet_regist_textarea" id="input_user_name" placeholder="Name">
+              </div>
+              <div class="form-group">
+                <label class="modal-label" for="input_user_e-mail">E-mail</label>
+                <input ng-model="user_email" type="text" class="form-control pet_regist_textarea" id="input_user_email" placeholder="E-mail">
+              </div>
+              <div class="form-group">
+                <label class="modal-label" for="input_user_password">비밀번호</label>
+                <input ng-model="user_password" type="text" class="form-control pet_regist_textarea" id="input_user_password" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label class="modal-label" for="profileFil">프로필 사진</label>
+                <input ng-model="user_profile" id="file-upload" type="file" accept="image/*">
+              </div>
+              <input type="hidden" ng-model="id" type="text" value="{{owner}}">
           </form>
+          Selected: <b>{{ selected.item }}</b>
       </div>
       <div class="modal-footer">
-          <div>
-          <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Post</button>
-            <ul class="pull-left list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
-		  </div>
+          <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+          <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
       </div>
+  </script>
   </div>
-  </div>
-</div>
 
 
 	</body>

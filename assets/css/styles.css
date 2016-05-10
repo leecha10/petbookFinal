@@ -677,6 +677,12 @@ button#btn_goto_regist {
 }
 
 
+
+.glyphicon-chat{
+  content: url("../ico/chat-icon.png");
+}
+
+
 #sidebar{
   margin-top: 14px;
 }
