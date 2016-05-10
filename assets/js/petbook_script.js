@@ -125,7 +125,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			}).then(function() {
 				firebaseURL = temp + owner + "/posts";
 				console.log(firebaseURL);
-				location.href="pethouse.html";
+				location.href="pethouse.php";
 			});
 
 		};
@@ -209,7 +209,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 						firebaseURL = firebaseURL + owner;
 						console.log(firebaseURL);
 
-						location.href="timeline_page.html";
+						location.href="timeline_page.php";
 	      	});
 	      }
 			},{remember:"default"});

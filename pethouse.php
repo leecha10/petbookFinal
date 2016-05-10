@@ -45,7 +45,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                       </button>
-                      <a href="timeline_page.html" class="navbar-brand logo">P</a>
+                      <a href="timeline_page.php" class="navbar-brand logo">P</a>
                     </div>
                     <nav class="collapse navbar-collapse" role="navigation">
                     <form class="navbar-form navbar-left">
@@ -58,10 +58,10 @@
                     </form>
                     <ul class="nav navbar-nav">
                       <li>
-                        <a href="pethouse.html"><i class="glyphicon glyphicon-home"></i> Pet house</a>
+                        <a href="pethouse.php"><i class="glyphicon glyphicon-home"></i> Pet house</a>
                       </li>
                       <li>
-                        <a href="Pet_regist.html"><i class="glyphicon glyphicon-plus"></i> Pet등록</a>
+                        <a href="Pet_regist.php"><i class="glyphicon glyphicon-plus"></i> Pet등록</a>
                       </li>
 
                     </ul>
@@ -84,20 +84,20 @@
                       <div class=" col-sm-2 col-sm-offset-1 sidebar-offcanvas" id="sidebar">
                         <div class="hidden-xs"id= "leftsidebar_upper_sm" >
                         <ul class="nav hidden-xs" id="lg-menu">
-                          <li class="leftsidebar active"><a href="timeline_page.html"><i class="glyphicon glyphicon-question"></i> Q&A Line</a></li>
-                          <li class="leftsidebar"><a href="stroll_mate.html"><i class="glyphicon glyphicon-mate"></i> 산책 mate 만들기</a></li>
-                          <li class="leftsidebar"><a href="group_purchase.html"><i class="glyphicon glyphicon-suggest"></i> 공동구매 제안하기</a></li>
-                          <li class="leftsidebar"><a href="pet_adopt.html"><i class="glyphicon glyphicon-dog"></i> 분양하기</a></li>
+                          <li class="leftsidebar active"><a href="timeline_page.php"><i class="glyphicon glyphicon-question"></i> Q&A Line</a></li>
+                          <li class="leftsidebar"><a href="stroll_mate.php"><i class="glyphicon glyphicon-mate"></i> 산책 mate 만들기</a></li>
+                          <li class="leftsidebar"><a href="group_purchase.php"><i class="glyphicon glyphicon-suggest"></i> 공동구매 제안하기</a></li>
+                          <li class="leftsidebar"><a href="pet_adopt.php"><i class="glyphicon glyphicon-dog"></i> 분양하기</a></li>
                         </ul>
                         </div>
 
                         <!-- tiny only nav-->
                         <div class="visible-xs">
                           <div id="timeline-top-button-group">
-                            <a href="timeline_page.html"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">Q&A</button></a>
-                            <a href="stroll_mate.html"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">산책</button></a>
-                            <a href="group_purchase.html"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">공구</button></a>
-                            <a href="pet_adopt.html"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">분양</button></a>
+                            <a href="timeline_page.php"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">Q&A</button></a>
+                            <a href="stroll_mate.php"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">산책</button></a>
+                            <a href="group_purchase.php"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">공구</button></a>
+                            <a href="pet_adopt.php"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">분양</button></a>
                           </div>
                         </div>
 
@@ -110,20 +110,6 @@
                         <div class="well">
                           <form class="" role="form">
                             <h4>Pethouse</h4>
-                            <div class="panel ">
-                              <div><img src="./assets/img/backgrounds/pet1.jpg" class="img-responsive"></div>
-                              <div class="panel-body">
-                                <div class="pet_name">뽀삐</div>
-                                <div class="pet_sex">
-                                  <img src="./assets/img/backgrounds/pet_woman.png" width="25px" height="30px">
-                                </div>
-                                <div class="hidden-xs pet_kind">개(말티즈)</div>
-                                <div class="hidden-xs pet_old">2살</div>
-                                <div class="hidden-xs pet_marry">연애중</div>
-                                <div class="hidden-xs pet_height_weight">24cm/10kg</div>
-                              </div>
-                              <a href="timeline_pet.html"><button type="button" id="enter-button"class="btn btn_purple btn-primary btn-lg btn-block">enter</button></a>
-                            </div>
                             <div ng-repeat="a in animalinfo" class="panel">
                               <div><img src="{{a.animalPhoto}}" class="img-responsive"></div>
                               <div class="panel-body">
@@ -136,7 +122,7 @@
                                 <div class="hidden-xs pet_marry">{{a.animalMarry}}</div>
                                 <div class="hidden-xs pet_height_weight">{{a.animalHeight}}cm / {{a.animalWeight}}kg</div>
                               </div>
-                              <a href="timeline_pet.html"><button type="button" id="enter-button"class="btn btn_purple btn-primary btn-lg btn-block">enter</button></a>
+                              <a href="timeline_pet.php"><button type="button" id="enter-button"class="btn btn_purple btn-primary btn-lg btn-block">enter</button></a>
                             </div>
                           </form>
                        </div>
