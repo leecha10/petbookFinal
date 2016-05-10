@@ -6,7 +6,6 @@ var temp = "https://petbookkdh.firebaseio.com/";
 var firebaseURL;
 var name;
 var picture;
-var animalid;
 
 
 // facebook 로그인 유지
@@ -68,10 +67,6 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			console.log(firebaseURL);
 		}
 
-		animalid = $localstorage.get("animalid");
-		console.log(animalid)
-		console.log("aid");
-
 		var def = new Firebase(temp);
 		$scope.default = $firebaseArray(def);
 
@@ -81,6 +76,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
 		var animal = temp + owner + "/animals";
 		console.log(animal);
+		console.log("animal");
 		var animalinfo = new Firebase(animal);
 		$scope.animalinfo = $firebaseArray(animalinfo);
 
@@ -102,15 +98,6 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			  }
 			});
 		}
-
-		// 동물 아이디 저장
-		$scope.animalidInput = function(s) {
-			$localstorage.set("animalid", s);
-			animalid = $localstorage.get("animalid");
-			//console.log(animalid);
-			location.href="timeline_pet.php";
-		}
-
 		// firebaseURL 안의 내용물 불러오기 (아직 써먹지 않음)
     $scope.getList = function() {
     	var echoRef = new Firebase(firebaseURL);
@@ -144,6 +131,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		};
 
 		// 사람이 글을 썼을 때 타임라인(posts)에 해당하는 firebase에 글 내용과 시간을 저장 (나머지는 아직 미구현)
+
     $scope.add = function() {
     				var myDate = new Date();
 					$scope.profileArr.$add({
@@ -200,6 +188,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     };
 
 		// 페이스북 로그인. 로그인 후 아이디 번호를 owner에 저장한 뒤 홈(timeline_page.html)으로 이동
+
     $scope.FBLogin = function () {
       var ref = new Firebase(firebaseURL);
 
@@ -241,14 +230,16 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
 		// this.loadimage에서 호출되는 함수의 일부분
 		function saveimage(e1) {
-				//var refImg = new Firebase(firebaseURL);
-				//console.log(firebaseURL);
-				//var ImgObj = $firebaseObject(refImg);
+				var refImg = new Firebase(firebaseURL);
+				console.log(firebaseURL);
+				var ImgObj = $firebaseObject(refImg);
 				var filename = e1.target.files[0];
 				var fr = new FileReader();
 				fr.onload = function (res) {
 						$scope.thumbnail = res.target.result;
-						//ImgObj.image = res.target.result;
+            document.getElementById("myImg").src = $scope.thumbnail;
+            document.getElementById("file-upload").addEventListener('change', saveimage, false);
+						ImgObj.image = res.target.result;
 
 						// 이미지를 직접 firebase에 저장하는 부분은 중복이라 코멘트 처리
 						/*ImgObj.$save().then(function (val) {
@@ -259,14 +250,14 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 				fr.readAsDataURL(filename);
 		}
 
-		// 파일 선택에서 선택한 이미지를 saveimage 함수를 이용해 $scope.thumbnail로 가져옴
+		// 파일 선택에서 선택한 이미지를 $scope.thumbnail로 가져옴
 		this.loadimage = function () {
 				firebaseURL = temp + owner + "/animals";
 				var refImg = new Firebase(firebaseURL);
 				console.log(firebaseURL);
 				var ImgObj = $firebaseObject(refImg);
 				ImgObj.$loaded().then(function (obj) {
-						//$scope.thumbnail = obj.image;
+						$scope.thumbnail = obj.image;
 						//console.log("loaded", $scope.thumbnail);
 						document.getElementById("file-upload").addEventListener('change', saveimage, false);
 						//document.getElementById("profileImage").src = obj.image;

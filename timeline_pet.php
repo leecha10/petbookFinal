@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="ng-app" ng-app="ui.bootstrap.demo">
+<html lang="en" id="ng-app" ng-app="PB">
   <head>
     <link rel="shortcut icon" type="image/x-icon" href="./assets/fabicon.png">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -32,7 +32,6 @@
 <!-- <script src="assets/js/app.js" type="text/javascript"></script> -->
 
 <script src="assets/js/forpet.js" type="text/javascript"></script>
-<script src="assets/js/petbook_script.js" type="text/javascript"></script>
 
 
 <!-- AngualrJS directives -->
@@ -43,7 +42,7 @@
         <script src="assets/js/angular-file-upload.js"></script>
 
         <!--thumbnails for images-->
-        <script src="assets/js/directives.js"></script>
+        <script src="assets/js/petbook_script.js"></script>
 
 <!-- AngularJS factory -->
 <!-- <script src="assets/js/fileRW.js"></script> -->
@@ -134,36 +133,14 @@
                         <p>petbook</p>
                        </div>
                        <!-- choice space -->
-                       <div ng-controller="MyCtrl" nv-file-drop="" uploader="uploader">
-                       <div class="button" ng-hide="uploader.isUploadPic"><input type="file" nv-file-select="" uploader="uploader" multiple class="file_input_hidden"/></div><br/>
-
-                            <div ng-repeat="item in uploader.queue">
-                                <div>
-                                    <strong>{{ item.file.name }}</strong>
-                                    <!-- Image preview -->
-                                    <!--auto height-->
-                                    <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
-                                    <!--auto width-->
-                                    <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
-                                    <!--fixed width and height -->
-                                    <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
-                                </div>
-
-                                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                                        <span class="glyphicon glyphicon-upload"></span> Upload
-                                    </button>
-                                    <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
-                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
-                                        <span class="glyphicon glyphicon-trash"></span> Remove
-                                    </button>
-                            </div>
+                       <div ng-controller="Ctrl" nv-file-drop="" uploader="uploader">
+                       <div class="button"><input type="file" ng-model="animalPhoto" id="file-upload" accept="image/*"/></div><br/>
+                       <img id="myImg" src="compman.gif" width="107" height="98">
                        </div>
                        </div>
                      </div>
                      <!-- END post -->
-                     <strong>{{animalid}}</strong>
+
                         <!-- content -->
                         <div class="full col-xs-14 col-lg-8 col-lg-offset-2 timeline_pet ">
                         <div class="full well col-xs-14">

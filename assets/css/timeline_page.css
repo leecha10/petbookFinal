@@ -1,0 +1,30 @@
+.post_name{
+	float: left;
+	font-size: 10pt;
+	font-weight: bold;
+	width: 80%;
+	height: 25pt;
+}
+
+.post_time{
+	float: left;
+	font-size: 8pt;
+	width: 80%;
+	color: gray;
+	height: 25pt;
+}
+
+.post_image{
+	width: 20%;
+	float: left;
+}
+
+.post_content{
+	width: 100%;
+	font-size: 12pt;
+}
+
+
+i.glyphicon.glyphicon-heart-empty {
+    margin-right: 10px;
+}
