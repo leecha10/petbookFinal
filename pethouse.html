@@ -125,7 +125,7 @@
                               <a href="timeline_pet.html"><button type="button" id="enter-button"class="btn btn_purple btn-primary btn-lg btn-block">enter</button></a>
                             </div>
                             <div ng-repeat="a in animalinfo" class="panel">
-                              <div><img src="./assets/img/backgrounds/pet1.jpg" class="img-responsive"></div>
+                              <div><img src="{{a.animalPhoto}}" class="img-responsive"></div>
                               <div class="panel-body">
                                 <div class="pet_name">{{a.animalName}}</div>
                                 <div class="pet_sex">
