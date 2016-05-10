@@ -131,7 +131,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		};
 
 		// 사람이 글을 썼을 때 타임라인(posts)에 해당하는 firebase에 글 내용과 시간을 저장 (나머지는 아직 미구현)
-	
+
     $scope.add = function() {
     				var myDate = new Date();
 					$scope.profileArr.$add({
@@ -237,6 +237,8 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 				var fr = new FileReader();
 				fr.onload = function (res) {
 						$scope.thumbnail = res.target.result;
+            document.getElementById("myImg").src = $scope.thumbnail;
+            document.getElementById("file-upload").addEventListener('change', saveimage, false);
 						ImgObj.image = res.target.result;
 
 						// 이미지를 직접 firebase에 저장하는 부분은 중복이라 코멘트 처리
