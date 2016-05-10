@@ -124,8 +124,7 @@
 
 
                       </div>
-
-                      <div class="col-sm-6 col-sm-offset-3">
+                      <div ng-if="animalinfo.length < 1" class="col-sm-6 col-sm-offset-3">
                         <div class="well"> 
                           <form class="form-horizontal" role="form">
                             <h4>Regist your lovely pet !</h4>

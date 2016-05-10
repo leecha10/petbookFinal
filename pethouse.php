@@ -110,6 +110,7 @@
                         <div class="well">
                           <form class="" role="form">
                             <h4>Pethouse</h4>
+
                             <div ng-repeat="a in animalinfo" class="panel">
                               <div><img src="{{a.animalPhoto}}" class="img-responsive"></div>
                               <div class="panel-body">
@@ -125,6 +126,16 @@
                               <a href="timeline_pet.php"><button type="button" id="enter-button"class="btn btn_purple btn-primary btn-lg btn-block">enter</button></a>
                             </div>
                           </form>
+                       </div>
+                      </div>
+
+                      <div ng-if="animalinfo.length < 1" class="col-sm-6 col-sm-offset-0">
+                       <div class="well"> 
+                        <form class="form-horizontal" role="form">
+                          <h4>Regist your lovely pet !</h4>
+                            <img id="pet_regist" src="./assets/img/backgrounds/pet_regist.jpg"></img>
+                          <a href="Pet_regist.php"><button class="col-lg-offset-4 col-lg-4 col-xs-6 col-xs-offset-3 col-md-6 col-md-offset-3 btn btn-primary btn_purple" id="btn_goto_regist" type="button"  >Go to regist my pet</button></a>
+                        </form>
                        </div>
                       </div>
 
