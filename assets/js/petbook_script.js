@@ -31,17 +31,6 @@ app.factory('$localstorage', ['$window', function($window) {
 
 // 전체 Controller
 app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $localstorage) {
-	  $scope.post;
-		$scope.animalName;
-		$scope.thumbnail;
-
-		var def = new Firebase(temp);
-		$scope.default = $firebaseArray(def);
-
-		var human = temp + "allpost";
-		var timeline = new Firebase(human);
-		$scope.timeline = $firebaseArray(timeline);
-
 		// Login 안되어 있을 때는 기본적인 FirebaseURL
 		if (owner == "") firebaseURL = temp;
 		console.log(firebaseURL);
@@ -78,6 +67,19 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			console.log(firebaseURL);
 		}
 
+		var def = new Firebase(temp);
+		$scope.default = $firebaseArray(def);
+
+		var human = temp + "allpost";
+		var timeline = new Firebase(human);
+		$scope.timeline = $firebaseArray(timeline);
+
+		var animal = temp + owner + "/animals";
+		console.log(animal);
+		console.log("animal");
+		var animalinfo = new Firebase(animal);
+		$scope.animalinfo = $firebaseArray(animalinfo);
+
 		// 일반 로그인
 		$scope.signin = function () {
 			var ref = new Firebase(temp);
@@ -101,18 +103,13 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     	var echoRef = new Firebase(firebaseURL);
   		var query = echoRef.orderByChild("url");
   		$scope.profileArr = $firebaseArray(query);
-
-			$scope.timeline;
     };
 
 		// 입력받은 동물의 이름, 프로필 사진을 firebase에 저장
 		$scope.addanimal = function() {
-			firebaseURL = temp + owner + "/animals";
-			var animal = new Firebase(firebaseURL);
-			$scope.animal = $firebaseArray(animal);
-			console.log($scope.animalName);
+			//console.log($scope.animalName);
 			//console.log($scope.thumbnail);
-			$scope.animal.$add({
+			$scope.animalinfo.$add({
 				animalName: $scope.animalName,
 				animalAge: $scope.animalAge,
 				animalHeight: $scope.animalHeight,

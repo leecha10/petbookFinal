@@ -21,13 +21,14 @@
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js" ></script>
+    <script src="assets/js/petbook_script.js" type="text/javascript"></script>
 
-  <!-- Angular -->
-<script src="js/app.js" type="text/javascript"></script>
   </head>
   <body ng-app="PB" ng-controller="Ctrl">
 
-    
+
 <div class="wrapper">
     <div class="box">
         <div class="row row-offcanvas row-offcanvas-left">
@@ -89,7 +90,7 @@
                           <li class="leftsidebar"><a href="pet_adopt.html"><i class="glyphicon glyphicon-dog"></i> 분양하기</a></li>
                         </ul>
                         </div>
-              
+
                         <!-- tiny only nav-->
                         <div class="visible-xs">
                           <div id="timeline-top-button-group">
@@ -99,14 +100,14 @@
                             <a href="pet_adopt.html"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">분양</button></a>
                           </div>
                         </div>
-              
+
                       </div>
                       <!-- leftside slide bar (finish)-->
 
 
                       <!-- content -->
                       <div class="full col-sm-6 col-sm-offset-0 ">
-                        <div class="well"> 
+                        <div class="well">
                           <form class="" role="form">
                             <h4>Pethouse</h4>
                             <div class="panel ">
@@ -123,17 +124,17 @@
                               </div>
                               <a href="timeline_pet.html"><button type="button" id="enter-button"class="btn btn_purple btn-primary btn-lg btn-block">enter</button></a>
                             </div>
-                            <div ng-repeat="animalName in animal" class="panel">
-                              <div><img src="./assets/img/backgrounds/pet1.jpg" class="img-responsive"></div>
+                            <div ng-repeat="a in animalinfo" class="panel">
+                              <div><img src="{{a.animalPhoto}}" class="img-responsive"></div>
                               <div class="panel-body">
-                                <div class="pet_name">{{animalName.animalName}}</div>
+                                <div class="pet_name">{{a.animalName}}</div>
                                 <div class="pet_sex">
                                   <img src="./assets/img/backgrounds/pet_woman.png" width="25px" height="30px">
                                 </div>
-                                <div class="hidden-xs pet_kind">{{animalName.animalKind}}({{animalName.animalDetailKind}})</div>
-                                <div class="hidden-xs pet_old">{{animalName.animalAge}}살</div>
-                                <div class="hidden-xs pet_marry">{{animalName.animalMarry}}}</div>
-                                <div class="hidden-xs pet_height_weight">{{animalName.animalHeight}}cm/{{animalName.animalweight}}kg</div>
+                                <div class="hidden-xs pet_kind">{{a.animalKind}}({{a.animalDetailKind}})</div>
+                                <div class="hidden-xs pet_old">{{a.animalAge}}살</div>
+                                <div class="hidden-xs pet_marry">{{a.animalMarry}}</div>
+                                <div class="hidden-xs pet_height_weight">{{a.animalHeight}}cm / {{a.animalWeight}}kg</div>
                               </div>
                               <a href="timeline_pet.html"><button type="button" id="enter-button"class="btn btn_purple btn-primary btn-lg btn-block">enter</button></a>
                             </div>
@@ -195,12 +196,6 @@
   </div>
   </div>
 </div>
-  <!-- script references -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js" ></script>
 
-
-    <script src="assets/js/petbook_script.js" type="text/javascript"></script>
-    
   </body>
 </html>
