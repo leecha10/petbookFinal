@@ -134,13 +134,15 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		};
 
 		// 사람이 글을 썼을 때 타임라인(posts)에 해당하는 firebase에 글 내용과 시간을 저장 (나머지는 아직 미구현)
+	
     $scope.add = function() {
+    				var myDate = new Date();
 					$scope.profileArr.$add({
 						name: name,
 						picture: picture,
 						post: $scope.post,
 						//number: animal,
-						time: Date()
+						time: myDate.getFullYear()+ "년 " +(myDate.getMonth() + 1) + "월 " + myDate.getDate() + "일 " + myDate.getHours() + "시" + myDate.getMinutes()+ "분"
 						//like:
 
 			}).then( function() {
@@ -149,7 +151,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 					picture: picture,
 					post: $scope.post,
 					id: owner,
-					time: Date()
+					time: myDate.getFullYear()+ "년 " +(myDate.getMonth() + 1) + "월 " + myDate.getDate() + "일 " + myDate.getHours() + "시" + myDate.getMinutes()+ "분"
 				});
 
 				$scope.post = "";
@@ -189,6 +191,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     };
 
 		// 페이스북 로그인. 로그인 후 아이디 번호를 owner에 저장한 뒤 홈(timeline_page.html)으로 이동
+
     $scope.FBLogin = function () {
       var ref = new Firebase(firebaseURL);
 

@@ -1,5 +1,5 @@
 var owner = "";
-var temp = "https://petbooksung.firebaseio.com/";
+var temp = "https://petbookkdh.firebaseio.com/";
 var firebaseURL;
 var name;
 var picture;
@@ -141,7 +141,7 @@ bootDemo.factory('$localstorage', ['$window', function($window) {
 }]);
 
 bootDemo.controller('MyCtrl', ['$scope', 'FileUploader','$firebaseArray', function($scope, FileUploader, $firebaseArray) {
-        var ref = new Firebase("https://petbooksung.firebaseio.com/");
+        var ref = new Firebase("https://petbookkdh.firebaseio.com/");
 
         $scope.animalPic = $firebaseArray(ref);
 
