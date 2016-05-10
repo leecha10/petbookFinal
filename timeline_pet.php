@@ -89,7 +89,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                       </button>
-                      <a href="timeline_page.html" class="navbar-brand logo">P</a>
+                      <a href="timeline_page.php" class="navbar-brand logo">P</a>
                     </div>
                     <nav class="collapse navbar-collapse" role="navigation">
                     <form class="navbar-form navbar-left">
@@ -102,10 +102,10 @@
                     </form>
                     <ul class="nav navbar-nav">
                       <li>
-                        <a href="pethouse.html"><i class="glyphicon glyphicon-home"></i> Pet house</a>
+                        <a href="pethouse.php"><i class="glyphicon glyphicon-home"></i> Pet house</a>
                       </li>
                       <li>
-                        <a href="Pet_regist.html"><i class="glyphicon glyphicon-plus"></i> Pet등록</a>
+                        <a href="Pet_regist.php"><i class="glyphicon glyphicon-plus"></i> Pet등록</a>
                       </li>
 
                     </ul>

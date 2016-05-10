@@ -43,7 +43,7 @@
           				<span class="icon-bar"></span>
           				<span class="icon-bar"></span>
                       </button>
-                      <a href="timeline_page.html" class="navbar-brand logo">P</a>
+                      <a href="timeline_page.php" class="navbar-brand logo">P</a>
                   	</div>
                   	<nav class="collapse navbar-collapse" role="navigation">
                     <form class="navbar-form navbar-left">
@@ -56,10 +56,10 @@
                     </form>
                     <ul class="nav navbar-nav">
                       <li>
-                        <a href="pethouse.html"><i class="glyphicon glyphicon-home"></i> Pet house</a>
+                        <a href="pethouse.php"><i class="glyphicon glyphicon-home"></i> Pet house</a>
                       </li>
                       <li>
-                        <a href="Pet_regist.html"><i class="glyphicon glyphicon-plus"></i> Pet regist</a>
+                        <a href="Pet_regist.php"><i class="glyphicon glyphicon-plus"></i> Pet regist</a>
                       </li>
 
                     </ul>
@@ -82,20 +82,20 @@
                       <div class=" col-sm-2 col-sm-offset-1 sidebar-offcanvas" id="sidebar">
                         <div class="hidden-xs"id= "leftsidebar_upper_sm" >
                         <ul class="nav hidden-xs" id="lg-menu">
-                          <li class="leftsidebar active"><a href="timeline_page.html"><i class="glyphicon glyphicon-question"></i> Q&A Line</a></li>
-                          <li class="leftsidebar"><a href="stroll_mate.html"><i class="glyphicon glyphicon-mate"></i> 산책 mate 만들기</a></li>
-                          <li class="leftsidebar"><a href="group_purchase.html"><i class="glyphicon glyphicon-suggest"></i> 공동구매 제안하기</a></li>
-                          <li class="leftsidebar"><a href="pet_adopt.html"><i class="glyphicon glyphicon-dog"></i> 분양하기</a></li>
+                          <li class="leftsidebar active"><a href="timeline_page.php"><i class="glyphicon glyphicon-question"></i> Q&A Line</a></li>
+                          <li class="leftsidebar"><a href="stroll_mate.php"><i class="glyphicon glyphicon-mate"></i> 산책 mate 만들기</a></li>
+                          <li class="leftsidebar"><a href="group_purchase.php"><i class="glyphicon glyphicon-suggest"></i> 공동구매 제안하기</a></li>
+                          <li class="leftsidebar"><a href="pet_adopt.php"><i class="glyphicon glyphicon-dog"></i> 분양하기</a></li>
                         </ul>
                         </div>
               
                         <!-- tiny only nav-->
                         <div class="visible-xs">
                           <div id="timeline-top-button-group">
-                            <a href="timeline_page.html"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">Q&A</button></a>
-                            <a href="stroll_mate.html"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">산책</button></a>
-                            <a href="group_purchase.html"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">공구</button></a>
-                            <a href="pet_adopt.html"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">분양</button></a>
+                            <a href="timeline_page.php"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">Q&A</button></a>
+                            <a href="stroll_mate.php"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">산책</button></a>
+                            <a href="group_purchase.php"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">공구</button></a>
+                            <a href="pet_adopt.php"><button class="btn btn-primary timeline-top-button" type="submit" class="btn btn_bottom">분양</button></a>
                           </div>
                         </div>
               
@@ -121,7 +121,7 @@
                           <form class="form-horizontal" role="form">
                             <h4>Regist your lovely pet !</h4>
                             <img id="pet_regist" src="./assets/img/backgrounds/pet_regist.jpg"></img>
-                            <a href="Pet_regist.html"><button class="col-lg-offset-4 col-lg-4 col-xs-6 col-xs-offset-3 col-md-6 col-md-offset-3 btn btn-primary btn_purple" id="btn_goto_regist" type="button"  >Go to regist my pet</button></a>
+                            <a href="Pet_regist.php"><button class="col-lg-offset-4 col-lg-4 col-xs-6 col-xs-offset-3 col-md-6 col-md-offset-3 btn btn-primary btn_purple" id="btn_goto_regist" type="button"  >Go to regist my pet</button></a>
                           </form>
                          </div>
                        </div>
