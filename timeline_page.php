@@ -173,39 +173,7 @@
 
 
 <!--post modal-->
-<div ng-controller="ModalDemoCtrl">
-  <script type="text/ng-template" id="myModalContent.html">
-      <div class="modal-header">
-          <h3 class="modal-title">Sign up on Petbook</h3>
-      </div>
-      <div class="modal-body">
-          <form>
-              <div class="form-group">
-                <label class="modal-label" for="input_user_name">이름</label>
-                <input ng-model="user_name" type="text" class="form-control pet_regist_textarea" id="input_user_name" placeholder="Name">
-              </div>
-              <div class="form-group">
-                <label class="modal-label" for="input_user_e-mail">E-mail</label>
-                <input ng-model="user_email" type="text" class="form-control pet_regist_textarea" id="input_user_email" placeholder="E-mail">
-              </div>
-              <div class="form-group">
-                <label class="modal-label" for="input_user_password">비밀번호</label>
-                <input ng-model="user_password" type="text" class="form-control pet_regist_textarea" id="input_user_password" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <label class="modal-label" for="profileFil">프로필 사진</label>
-                <input ng-model="user_profile" id="file-upload" type="file" accept="image/*">
-              </div>
-              <input type="hidden" ng-model="id" type="text" value="{{owner}}">
-          </form>
-          Selected: <b>{{ selected.item }}</b>
-      </div>
-      <div class="modal-footer">
-          <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-          <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-      </div>
-  </script>
-  </div>
+
 
 
 	</body>
