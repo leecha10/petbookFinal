@@ -123,17 +123,17 @@
                               </div>
                               <a href="timeline_pet.html"><button type="button" id="enter-button"class="btn btn_purple btn-primary btn-lg btn-block">enter</button></a>
                             </div>
-                            <div class="panel">
+                            <div ng-repeat="animalName in animal" class="panel">
                               <div><img src="./assets/img/backgrounds/pet1.jpg" class="img-responsive"></div>
                               <div class="panel-body">
-                                <div class="pet_name">뽀삐</div>
+                                <div class="pet_name">{{animalName.animalName}}</div>
                                 <div class="pet_sex">
                                   <img src="./assets/img/backgrounds/pet_woman.png" width="25px" height="30px">
                                 </div>
-                                <div class="hidden-xs pet_kind">개(말티즈)</div>
-                                <div class="hidden-xs pet_old">2살</div>
-                                <div class="hidden-xs pet_marry">연애중</div>
-                                <div class="hidden-xs pet_height_weight">24cm/10kg</div>
+                                <div class="hidden-xs pet_kind">{{animalName.animalKind}}({{animalName.animalDetailKind}})</div>
+                                <div class="hidden-xs pet_old">{{animalName.animalAge}}살</div>
+                                <div class="hidden-xs pet_marry">{{animalName.animalMarry}}}</div>
+                                <div class="hidden-xs pet_height_weight">{{animalName.animalHeight}}cm/{{animalName.animalweight}}kg</div>
                               </div>
                               <a href="timeline_pet.html"><button type="button" id="enter-button"class="btn btn_purple btn-primary btn-lg btn-block">enter</button></a>
                             </div>

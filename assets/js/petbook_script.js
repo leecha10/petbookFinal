@@ -113,21 +113,22 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			console.log($scope.animalName);
 			//console.log($scope.thumbnail);
 			$scope.animal.$add({
-				'animalName': $scope.animalName,
-				'animalAge': $scope.animalAge,
-				'animalHeight': $scope.animalHeight,
-				'animalWeight': $scope.animalWeight,
-				'animalSex': $scope.animalSex,
-				'animalMarry': $scope.animalMarry,
-				'animalFamilly': $scope.animalFamilly,
-				'animalKind': $scope.animalKind,
-				'animalDetailKind': $scope.animalDetailKind,
-				'animalFavoriteFood': $scope.animalFavoriteFood,
-				'animalCharacter': $scope.animalCharacter,
-				'animalPhoto': $scope.thumbnail
+				animalName: $scope.animalName,
+				animalAge: $scope.animalAge,
+				animalHeight: $scope.animalHeight,
+				animalWeight: $scope.animalWeight,
+				animalSex: $scope.animalSex,
+				animalMarry: $scope.animalMarry,
+				animalFamilly: $scope.animalFamilly,
+				animalKind: $scope.animalKind,
+				animalDetailKind: $scope.animalDetailKind,
+				animalFavoriteFood: $scope.animalFavoriteFood,
+				animalCharacter: $scope.animalCharacter,
+				animalPhoto: $scope.thumbnail
 			}).then(function() {
 				firebaseURL = temp + owner + "/posts";
 				console.log(firebaseURL);
+				location.href="pethouse.html";
 			});
 
 		};
