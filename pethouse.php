@@ -121,16 +121,16 @@
                                 <div class="hidden-xs pet_kind">{{a.animalKind}}({{a.animalDetailKind}})</div>
                                 <div class="hidden-xs pet_old">{{a.animalAge}}살</div>
                                 <div class="hidden-xs pet_marry">{{a.animalMarry}}</div>
-                                <div class="hidden-xs pet_height_weight">{{a.animalHeight}}cm / {{a.animalWeight}}kg</div>
+                                <div class="hidden-xs pet_height_weight">{{a.animalHeight}}cm / {{a.animalWeight}}kg</div>                                
                               </div>
-                              <a href="timeline_pet.php"><button type="button" id="enter-button"class="btn btn_purple btn-primary btn-lg btn-block">enter</button></a>
+                              <a ng-click="animalidInput(a.$id)"><button type="button" id="enter-button"class="btn btn_purple btn-primary btn-lg btn-block">enter</button></a>
                             </div>
                           </form>
                        </div>
                       </div>
 
                       <div ng-if="animalinfo.length < 1" class="col-sm-6 col-sm-offset-0">
-                       <div class="well"> 
+                       <div class="well">
                         <form class="form-horizontal" role="form">
                           <h4>Regist your lovely pet !</h4>
                             <img id="pet_regist" src="./assets/img/backgrounds/pet_regist.jpg"></img>

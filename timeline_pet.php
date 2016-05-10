@@ -32,6 +32,7 @@
 <!-- <script src="assets/js/app.js" type="text/javascript"></script> -->
 
 <script src="assets/js/forpet.js" type="text/javascript"></script>
+<script src="assets/js/petbook_script.js" type="text/javascript"></script>
 
 
 <!-- AngualrJS directives -->
@@ -162,7 +163,7 @@
                        </div>
                      </div>
                      <!-- END post -->
-
+                     <strong>{{animalid}}</strong>
                         <!-- content -->
                         <div class="full col-xs-14 col-lg-8 col-lg-offset-2 timeline_pet ">
                         <div class="full well col-xs-14">
