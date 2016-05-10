@@ -80,12 +80,16 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		var animalinfo = new Firebase(animal);
 		$scope.animalinfo = $firebaseArray(animalinfo);
 
-		
+    var animalpost = temp+owner+"/animalpost";
+    var timeline_pet = new Firebase(animalpost);
+    $scope.timeline_pet = $firebaseArray(timeline_pet);
+
+
 		// 타임라인 모달 스크립트 (시작)
 		// Get the modal
 	    var modalex = document.getElementById('myModal');
 
-		// When the user clicks the button, open the modal 
+		// When the user clicks the button, open the modal
 	    $scope.modalClick = function() {
 	        modalex.style.display = "block";
 	        console.log("animal");
@@ -154,6 +158,21 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			});
 
 		};
+
+    // 동물 타임라인 포스트르 firebase에 저장
+    $scope.post = function() {
+       console.log("addanimalpost");
+        //console.log($scope.animalName);
+        //console.log($scope.thumbnail);
+        $scope.timeline_pet.$add({
+          animalPost: $scope.thumbnail
+        }).then(function() {
+          // firebaseURL = temp;
+          // console.log(firebaseURL);
+          //location.href="pethouse.php";
+        });
+        $scope.uploadPic = false;
+    };
 
 		// 사람이 글을 썼을 때 타임라인(posts)에 해당하는 firebase에 글 내용과 시간을 저장 (나머지는 아직 미구현)
 
@@ -272,6 +291,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 								console.log("ERROR", error);
 						})*/
 				};
+        $scope.uploadPic = true;
 				fr.readAsDataURL(filename);
 		}
 

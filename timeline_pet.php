@@ -135,7 +135,8 @@
                        <!-- choice space -->
                        <div ng-controller="Ctrl" nv-file-drop="" uploader="uploader">
                        <div class="button"><input type="file" ng-model="animalPhoto" id="file-upload" accept="image/*"/></div><br/>
-                       <img id="myImg" src="compman.gif" width="107" height="98">
+                       <img ng-show="uploadPic" id="myImg" src="" width="107" height="98">
+                       <button ng-show="uploadPic" type="button" ng-click="post()">upload</button>
                        </div>
                        </div>
                      </div>
