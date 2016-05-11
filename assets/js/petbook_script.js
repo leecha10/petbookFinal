@@ -164,19 +164,16 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
     // 동물 타임라인 포스트르 firebase에 저장
     $scope.post = function() {
-       console.log("addanimalpost");
-        //console.log($scope.animalName);
-        //console.log($scope.thumbnail);
         $scope.timeline_pet.$add({
           animalPost: $scope.thumbnail
-        }).then(function() {
-          // firebaseURL = temp;
-          // console.log(firebaseURL);
-          //location.href="pethouse.php";
-        });
+        })
         $scope.uploadPic = false;
-        //console.log("$scope.uploadPic2",$scope.uploadPic);
     };
+
+    // 동물 타임라인 포스트 취소하기
+    $scope.cancel = function() {
+      $scope.uploadPic = false;
+    }
 
     // 사람이 글을 썼을 때 타임라인(posts)에 해당하는 firebase에 글 내용과 시간을 저장 (나머지는 아직 미구현)
 

@@ -108,6 +108,12 @@
     width: 100%;
     height:115px;
   }
+
+  .myImg{
+    background-size: 100% 115px;
+    width: 100%;
+    height:115px;
+  }
 }
 
 @media screen and (min-width: 322px) and (max-width: 376px){
@@ -123,6 +129,12 @@
     background-size: 100% 100px;
     width: 100%;
     height: 100px;
+  }
+
+  .myImg{
+    background-size: 100% 115px;
+    width: 100%;
+    height:100px;
   }
 }
 
@@ -140,6 +152,12 @@
     width: 100%;
     height:115px;
   }
+
+  .myImg{
+    background-size: 100% 115px;
+    width: 100%;
+    height:115px;
+  }
 }
 
 @media screen and (min-width: 437px){
@@ -152,6 +170,12 @@
 
   .button{
     background-image: url("assets/img/backgrounds/uploadPic.jpg");
+    background-size: 100% 115px;
+    width: 100%;
+    height:115px;
+  }
+
+  .myImg{
     background-size: 100% 115px;
     width: 100%;
     height:115px;
@@ -243,14 +267,11 @@
                           <form class="form-horizontal" role="form">
                             <h4>Upload your photo!</h4>
                               <div class="form-group" style="padding:14px;">
-                                <!-- <textarea id="question_textarea" class="form-control" ng-model="post" placeholder="Update your question"></textarea> -->
-                                <!-- <div ng-controller="Ctrl"> -->
                                   <div ng-show="!uploadPic" class="button"><input class="file_input_hidden" type="file" ng-model="animalPhoto" id="file-upload" accept="image/*"/></div>
-                                  <img ng-show="uploadPic" id="myImg" src="" width="107" height="98">
-                                  <!-- <button ng-show="uploadPic" type="button" ng-click="post()">upload</button> -->
-                               <!--  </div> -->
+                                  <img ng-show="uploadPic" class="myImg" id="myImg" src="">
                               </div>
                               <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" ng-click="post()" type="button">Post</button>
+                               <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" style="margin-right:15px" ng-click="cancel()" type="button">cancel</button>
                               <ul class="list-inline">
 
                                 <li><a ><i href="./assets/img/backgrounds/glyphicons-246-chat.png" class="glyphicon glyphicon-pencil"></i></a></li>
