@@ -115,41 +115,10 @@
                         </div>
                        </div>
 
-                       <div ng-if="animalinfo.length < 1" class="col-sm-6 col-sm-offset-3">
-                       <div class="well">
-                        <form class="form-horizontal" role="form">
-                          <h4>Regist your lovely pet !</h4>
-                            <img id="pet_regist" src="./assets/img/backgrounds/pet_regist.jpg"></img>
-                          <a href="Pet_regist.php"><button class="col-lg-offset-4 col-lg-4 col-xs-6 col-xs-offset-3 col-md-6 col-md-offset-3 btn btn-primary btn_purple" id="btn_goto_regist" type="button"  >Go to regist my pet</button></a>
-                        </form>
-                       </div>
-                      </div>
-
                       <!-- post contents -->
 
 
-                      <div ng-repeat="post in timeline | reverse" class="col-sm-6 col-sm-offset-3 ">
-                        <div class="well">
-                          <div class="post_image">
-                            <img src="{{post.picture}}" width=50 height=50 />
-                          </div>
-                          <div class="post_name">
-                            {{post.name}}
-                          </div>
-                          <div class="post_time">
-                            {{post.time}}
-                          </div>
-                          <div class="post_content">
-                            {{post.post}}
-                          </div>
-                          <hr>
-
-                          <div>
-                            <a><i class="glyphicon glyphicon-heart-empty"></i></a>
-                            <a ng-click="modalClick()"><i class="glyphicon glyphicon-chat"></i></a>
-                          </div>
-                        </div>
-                      </div>
+          
 
                       <!-- post contents end -—>
 
@@ -164,24 +133,6 @@
 </div>
 
 
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span ng-click="modalClose()"class="close">close</span>
-      <h2>Modal Header</h2>
-    </div>
-    <div class="modal-body">
-      <p>Some text in the Modal Body</p>
-      <p>Some other text...</p>
-    </div>
-    <div class="modal-footer">
-      <h3>Modal Footer</h3>
-    </div>
-  </div>
-
-</div>
 
 <!--post modal-->
 
