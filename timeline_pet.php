@@ -273,9 +273,6 @@
                               <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" ng-click="post()" type="button">Post</button>
                                <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" style="margin-right:15px" ng-click="cancel()" type="button">cancel</button>
                               <ul class="list-inline">
-
-                                <li><a ><i href="./assets/img/backgrounds/glyphicons-246-chat.png" class="glyphicon glyphicon-pencil"></i></a></li>
-                                <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
                               </ul>
                           </form>
                         </div>
