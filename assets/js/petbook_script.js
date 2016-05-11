@@ -163,7 +163,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     };
 
     // 동물 타임라인 포스트르 firebase에 저장
-    $scope.post = function() {
+    $scope.animalPost = function() {
         $scope.timeline_pet.$add({
           animalPost: $scope.thumbnail
         })

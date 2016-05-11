@@ -270,7 +270,7 @@
                                   <div ng-show="!uploadPic" class="button"><input class="file_input_hidden" type="file" ng-model="animalPhoto" id="file-upload" accept="image/*"/></div>
                                   <img ng-show="uploadPic" class="myImg" id="myImg" src="">
                               </div>
-                              <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" ng-click="post()" type="button">Post</button>
+                              <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" ng-click="animalPost()" type="button">Post</button>
                                <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" style="margin-right:15px" ng-click="cancel()" type="button">cancel</button>
                               <ul class="list-inline">
                               </ul>
