@@ -34,11 +34,11 @@ app.factory('$localstorage', ['$window', function($window) {
 app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $localstorage) {
 		// Login 안되어 있을 때는 기본적인 FirebaseURL
 		if (owner == "") firebaseURL = temp;
-		console.log(firebaseURL);
+		//console.log(firebaseURL);
 
 		// localstorage의 로그인 데이터를 scope로 불러옴
 		$scope.$authData = $localstorage.get("authData");
-		console.log($localstorage.get("authData"));
+		//console.log($localstorage.get("authData"));
 
 		// 로그인이 되었을 때 계정의 아이디 번호, 이름, 프로필 사진을 가져오고
 		// FirebaseURL을 기본 URL/fbIDNo 로 변경 (ex: firebaseURL/123456)
@@ -46,11 +46,11 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			owner = JSON.parse($localstorage.get("authData")).facebook.id;
 			name = JSON.parse($localstorage.get("authData")).facebook.displayName;
 			picture = JSON.parse($localstorage.get("authData")).facebook.profileImageURL;
-			console.log(name);
-			console.log(picture);
+			//console.log(name);
+			//console.log(picture);
 
 			firebaseURL = firebaseURL + owner;
-			console.log(firebaseURL);
+			//console.log(firebaseURL);
 
 			// 로그인 되었을 때 이름과 프로필 사진을 firebase에 저장 후 사람 타임라인 post 준비 (ex: firebaseURL/123456/posts)
 			var info = new Firebase(firebaseURL);
@@ -65,12 +65,12 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			firebaseURL = temp;
 			//$localstorage.set("authData", undefined);
 
-			console.log(firebaseURL);
+			//console.log(firebaseURL);
 		}
 
 		animalid = $localstorage.get("animalid");
-		console.log(animalid)
-		console.log("aid");
+		//console.log(animalid)
+		//console.log("aid");
 
 		var def = new Firebase(temp);
 		$scope.default = $firebaseArray(def);
@@ -80,7 +80,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		$scope.timeline = $firebaseArray(timeline);
 
 		var animal = temp + owner + "/animals";
-		console.log(animal);
+		//console.log(animal);
 		var animalinfo = new Firebase(animal);
 		$scope.animalinfo = $firebaseArray(animalinfo);
 
@@ -139,7 +139,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 					animalSize: "소"
 				}).then(function() {
 					firebaseURL = temp + owner + "/posts";
-					console.log(firebaseURL);
+					//console.log(firebaseURL);
 					location.href="pethouse.php";
 				});
 			}
@@ -160,7 +160,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 					animalSize: "중"
 				}).then(function() {
 					firebaseURL = temp + owner + "/posts";
-					console.log(firebaseURL);
+					//console.log(firebaseURL);
 					location.href="pethouse.php";
 				});
 			}
@@ -181,7 +181,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 					animalSize: "대"
 				}).then(function() {
 					firebaseURL = temp + owner + "/posts";
-					console.log(firebaseURL);
+					//console.log(firebaseURL);
 					location.href="pethouse.php";
 				});
 			}
@@ -262,7 +262,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 						console.log("Authenticated successfully with payload:", authData);
 
 						firebaseURL = firebaseURL + owner;
-						console.log(firebaseURL);
+						//console.log(firebaseURL);
 
 						location.href="timeline_page.php";
 	      	});
@@ -310,7 +310,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		this.loadimage = function () {
 				firebaseURL = temp + owner + "/animals";
 				var refImg = new Firebase(firebaseURL);
-				console.log(firebaseURL);
+				//console.log(firebaseURL);
 				var ImgObj = $firebaseObject(refImg);
 				ImgObj.$loaded().then(function (obj) {
 						//$scope.thumbnail = obj.image;
@@ -321,7 +321,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 						console.log("ERROR", error);
 				});
 				firebaseURL = temp + owner + "/posts";
-				console.log(firebaseURL);
+				//console.log(firebaseURL);
 		};
 		this.loadimage();
 
