@@ -102,15 +102,9 @@
                       <div class="full col-sm-6 col-sm-offset-0 ">
                         <div class="well" ng-controller="Ctrl" >
                           <form class="form-horizontal" role="form">
-                            <h4>Upload your photo!</h4>
-                              <div class="form-group" style="padding:14px;">
-                                  <div ng-show="!uploadPic" class="button"><input class="file_input_hidden" type="file" ng-model="animalPhoto" id="file-upload" accept="image/*"/></div>
-                                  <img ng-show="uploadPic" class="myImg" id="myImg" src="">
-                              </div>
-                              <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" ng-click="animalPost()" type="button">Post</button>
-                               <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" style="margin-right:15px" ng-click="cancel()" type="button">cancel</button>
-                              <ul class="list-inline">
-                              </ul>
+                            <h4>Make freind for your pet</h4>
+
+        
                           </form>
                         </div>
                        </div>
