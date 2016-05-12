@@ -139,7 +139,7 @@
                       
 
                       <div ng-repeat="post in timeline | reverse" class="col-sm-6 col-sm-offset-3 ">
-                        <div class="well">
+                        <div id="timeline_content"class="well">
                           <div class="post_image">
                             <img src="{{post.picture}}" width=50 height=50 />
                           </div>
@@ -184,35 +184,38 @@
     </div>
     <div class="modal-body">
         <div class="well">
-          <div class="post_image">
-            <img class="modal_profile" width=50 height=50 src="{{picture}}" />
+          <div class="comment_image">
+            <img class="modal_profile" src="./assets/img/backgrounds/다혜.png" />
           </div>
-          <div class="">jeffkim</div>
-          <div class="">어 저희두요~!!</div> 
-           <div class="">2016년5월12일 17시51분</div>
+          <div class="comment_name">성다혜</div>
+          <div class="comment_content">어 저희두요~!!</div> 
+          <div class="comment_time">2016년5월12일 17시51분</div>
         </div>
         <div class="well">
-          <div class="post_image">
-            <img class="modal_profile" width=50 height=50 src="{{picture}}" />
+          <div class="comment_image">
+            <img class="modal_profile"  src="./assets/img/backgrounds/동휘.png" />
           </div>
-          <div class="">jeffkim</div>
-          <div class="">귀엽네요~~</div> 
-           <div class="">2016년5월12일 14시23분</div>
+          <div class="comment_name">jeffkim</div>
+          <div class="comment_content">귀엽네요~~</div> 
+           <div class="comment_time">2016년5월12일 14시23분</div>
         </div>
         <div class="well">
-          <div class="post_image">
-            <img class="modal_profile" width=50 height=50 src="{{picture}}" />
+          <div class="comment_image">
+            <img class="modal_profile" src="./assets/img/backgrounds/찬영.png" />
           </div>
-          <div class="">jeffkim</div>
-          <div class="">ㄷㄷ 짱귀여워 ㅋㅋㅋ</div> 
-           <div class="">2016년5월11일 19시31분</div>
+          <div class="comment_name">이찬영</div>
+          <div class="comment_content">ㄷㄷ 짱귀여워 ㅋㅋㅋ</div> 
+           <div class="comment_time">2016년5월11일 19시31분</div>
         </div>
     </div>
     <div class="modal-footer">
-      <div class="post_image">
-        <img src="{{picture}}" width=50 height=50 />
+      <div class="comment_textbox">
+        <img id="comment_picture"src="./assets/img/backgrounds/동휘.png" />
       </div>
-
+      <form>
+      <input class="comment_input"type="text" placeholder="comment here">
+      </form>
+       <button class="btn comment_btn" type="button" >Post</button>
     </div>
   </div>
 

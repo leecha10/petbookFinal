@@ -724,7 +724,7 @@ button#btn_goto_regist {
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 80%;
+    width: 60%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -764,14 +764,139 @@ button#btn_goto_regist {
     color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+    padding-top: 21px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 
 .modal-footer {
-    padding: 2px 16px;
+    padding: 2px 2px;
     background-color: #C05CF3;
     color: white;
 }
 
+.modal_profile{
+  width:60px;
+  height:60px;
+}
+
+#comment_picture{
+  width:50px;
+  height:50px;
+}
+
+.comment_image{
+  width: 15%;
+  float: left;
+}
+
+.comment_time{
+  color: gray;
+  font-size: 8pt;
+}
+.comment_name{
+  font-weight: bold;
+}
+.comment_content{
+  font-size: 11pt;
+}
+.comment_btn{
+    margin-top: 22px;
+    color: #C05CF3;
+    font-size: 11pt;
+    font-weight: bold;
+    margin-right: 2%;
+    background: white
+}
+.comment_input{
+  width: 75%;
+  float: left;
+  height: 30px;
+  margin-left: 2%;
+  margin-top: 25px;
+}
+
+.comment_textbox{
+  width: 10%;
+  float: left;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+  .comment_btn:hover,
+  .comment_btn:focus{
+    color: #7A29AD;
+  }
+
+@media (max-width: 420px){
+  .comment_btn:hover,
+  .comment_btn:focus{
+    color: #7A29AD;
+  }
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .modal-content {
+    width: 90%;
+  }
+
+  .modal_profile{
+    width:40px;
+    height:40px;
+  }
+
+  #comment_picture{
+    width:30px;
+    height:30px;
+  }
+
+  .comment_image{
+    float: left;
+    width: 20%;
+    height: 60px;
+  }
+
+  .comment_time{
+    color: gray;
+    font-size: 8pt;
+    width: 80%;
+  }
+  .comment_name{
+    font-weight: bold;
+    width: 80%;
+  }
+  .comment_content{
+    font-size: 11pt;
+    width: 80%;
+  }
+  .comment_btn{
+    margin-top: 16px;
+    color: #C05CF3;
+    font-size: 7pt;
+    font-weight: bold;
+    margin-right: 1%;
+    background: white;
+  }
+  .comment_input{
+    width: 67%;
+    float: left;
+    height: 30px;
+    margin-left: 3%;
+    margin-top: 15px;
+  }
+
+  .comment_textbox{
+    width: 10%;
+    float: left;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 1%;
+  }
+} 
 /**************** timeline page modal (finish) ************/
 /**************** pet regist ***********/
 #profile_regist{
