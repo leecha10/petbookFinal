@@ -87,6 +87,7 @@ img { max-width: 100%; }
 
 .top-content .text {
 	color: #fff;
+  text-align: center;
 }
 
 .top-content .text h1 { color: #fff; }
@@ -166,6 +167,7 @@ img { max-width: 100%; }
 
 .social-login {
 	margin-top: 35px;
+  text-align: center;
 }
 
 .social-login h3 {

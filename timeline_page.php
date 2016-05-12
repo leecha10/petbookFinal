@@ -183,27 +183,36 @@
       <h2>댓글 달기</h2>
     </div>
     <div class="modal-body">
-      <div ng-repeat="post in timeline | reverse" class="col-sm-6 col-sm-offset-3 ">
         <div class="well">
           <div class="post_image">
-            <img src="{{post.picture}}" width=50 height=50 />
+            <img class="modal_profile" width=50 height=50 src="{{picture}}" />
           </div>
-          <div class="">
-            {{post.name}}
-          </div>
-          <div class="">
-            {{post.post}}
-          </div> 
-           <div class="">
-            {{post.time}}
-          </div>
+          <div class="">jeffkim</div>
+          <div class="">어 저희두요~!!</div> 
+           <div class="">2016년5월12일 17시51분</div>
         </div>
-      </div>
+        <div class="well">
+          <div class="post_image">
+            <img class="modal_profile" width=50 height=50 src="{{picture}}" />
+          </div>
+          <div class="">jeffkim</div>
+          <div class="">귀엽네요~~</div> 
+           <div class="">2016년5월12일 14시23분</div>
+        </div>
+        <div class="well">
+          <div class="post_image">
+            <img class="modal_profile" width=50 height=50 src="{{picture}}" />
+          </div>
+          <div class="">jeffkim</div>
+          <div class="">ㄷㄷ 짱귀여워 ㅋㅋㅋ</div> 
+           <div class="">2016년5월11일 19시31분</div>
+        </div>
     </div>
     <div class="modal-footer">
       <div class="post_image">
-        <img src="{{post.picture}}" width=50 height=50 />
+        <img src="{{picture}}" width=50 height=50 />
       </div>
+
     </div>
   </div>
 

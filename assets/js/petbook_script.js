@@ -84,6 +84,28 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		var animalinfo = new Firebase(animal);
 		$scope.animalinfo = $firebaseArray(animalinfo);
 
+		// 타임라인 모달 스크립트 (시작)
+	    // Get the modal
+	      var modalex = document.getElementById('myModal');
+
+	    // When the user clicks the button, open the modal
+	      $scope.modalClick = function() {
+	          modalex.style.display = "block";
+	          console.log("animal");
+	      }
+
+	      // When the user clicks on <span> (x), close the modal
+	      $scope.modalClose = function() {
+	          modalex.style.display = "none";
+	      }
+	      /*
+	      // When the user clicks anywhere outside of the modal, close it
+	      window.onclick = function(event) {
+	          if (event.target == modalex) {
+	              modalex.style.display = "none";
+	          }
+	      }*/
+		// 타임라인 모달 스크립트 (끝)
 		// 일반 로그인
 		$scope.signin = function () {
 			var ref = new Firebase(temp);
