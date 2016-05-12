@@ -106,6 +106,23 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 	          }
 	      }*/
 		// 타임라인 모달 스크립트 (끝)
+		
+		// 하트 스크립트 (시작)
+		var heart = 0;
+		var heart_image = document.getElementsByClassName("glyphicon-black-heart");
+
+		$scope.heartClick = function(){
+			if(heart == 0){
+				heart_image[0].style.content = "url('assets/ico/red-bone.png')";
+				heart = 1;
+			}
+			else if(heart == 1){
+				heart_image[0].style.content = "url('assets/ico/black-bone.png')";
+				heart = 0;
+			}
+		}
+		// 하트 스크립트 (끝)
+
 		// 일반 로그인
 		$scope.signin = function () {
 			var ref = new Firebase(temp);

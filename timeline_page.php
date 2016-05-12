@@ -155,7 +155,7 @@
                           <hr>
                       
                           <div>
-                            <a><i class="glyphicon glyphicon-heart-empty"></i></a>
+                            <a ng-click="heartClick()"><i class="glyphicon glyphicon-black-heart"></i></a>  
                             <a ng-click="modalClick()"><i class="glyphicon glyphicon-chat"></i></a>  
                           </div>
                         </div>

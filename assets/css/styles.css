@@ -682,6 +682,18 @@ button#btn_goto_regist {
   content: url("../ico/chat-icon.png");
 }
 
+.glyphicon-chat:hover{
+  content: url("../ico/chat-icon-dark.png");
+  cursor: pointer;
+}
+
+.glyphicon-black-heart{
+  content: url("../ico/black-bone.png");
+  margin-right: 1%;
+}
+.glyphicon-black-heart:hover, .glyphicon-red-heart:hover{
+  cursor: pointer;
+}
 
 #sidebar{
   margin-top: 14px;
