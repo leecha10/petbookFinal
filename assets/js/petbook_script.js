@@ -111,13 +111,15 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		var heart = 0;
 		var heart_image = document.getElementsByClassName("glyphicon-black-heart");
 
-		$scope.heartClick = function(){
+
+		$scope.heartClick = function($heart_index_byClick){
+			var heart_index= $heart_index_byClick;
 			if(heart == 0){
-				heart_image[0].style.content = "url('assets/ico/red-bone.png')";
+				heart_image[heart_index].style.content = "url('assets/ico/red-bone.png')";
 				heart = 1;
 			}
 			else if(heart == 1){
-				heart_image[0].style.content = "url('assets/ico/black-bone.png')";
+				heart_image[heart_index].style.content = "url('assets/ico/black-bone.png')";
 				heart = 0;
 			}
 		}
