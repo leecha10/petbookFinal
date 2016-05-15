@@ -117,7 +117,7 @@
 
                       <!-- post contents -->
 
-
+                      <!--
                       <div ng-repeat="post in timeline | reverse" class="col-sm-6 col-sm-offset-3 ">
                         <div class="well">
                           <div class="post_image">
@@ -139,7 +139,7 @@
                             <a ng-click="modalClick()"><i class="glyphicon glyphicon-chat"></i></a>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
 
                       <!-- post contents end -—>
 
