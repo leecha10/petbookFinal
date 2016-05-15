@@ -23,6 +23,10 @@
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
     <script src="assets/js/petbook_script.js" type="text/javascript"></script>
 
+    <!-- daum 우편번호, 지도 script -->
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a8357d42d4e90b66009f8677b47908c3&libraries=services"></script>
+
 	</head>
 <body ng-app="PB" ng-controller="Ctrl">
 
@@ -221,6 +225,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js" ></script>
 
     <script src="assets/js/petbook_script.js" type="text/javascript"></script>
-    
+
 	</body>
 </html>
