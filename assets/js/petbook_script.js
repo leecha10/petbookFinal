@@ -457,7 +457,7 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
                 var myFirebaseRef = new Firebase("https://petbooksung.firebaseio.com/");
                 myFirebaseRef.child('Addr').set(fullRoadAddr);
               }
-        }).open();
+        }).open();searchCurrentPosition
         $scope.findAddr();
       }
 

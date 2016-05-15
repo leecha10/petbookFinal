@@ -146,7 +146,7 @@
                                     </div>
                                     <input type="hidden" ng-model="id" type="text" value="{{owner}}">
 
-                                    <div id="petregist_map"ng-controller="mapCtrl">
+                                    <div id="petregist_map" ng-controller="mapCtrl">
                                       <label id="pet_position_label"for="pet_position">위치 등록</label>
                                       <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
                                       <button class="btn btn-map" ng-click="postcode()">우편번호 찾기</button><br>
