@@ -22,8 +22,6 @@
     <script src="assets/js/angularfire.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
-    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a8357d42d4e90b66009f8677b47908c3&libraries=services"></script>
-    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script src="assets/js/petbook_script.js"></script>
 
 
@@ -105,20 +103,44 @@
                       <!-- content -->
                       <div class="full col-sm-6 col-sm-offset-0 ">
                         <div class="well" ng-controller="Ctrl" >
-                          <form class="form-horizontal" role="form">
-                            <h4>Make freind for your pet</h4>
+                            <h4 id="friend_result_h4">New friends list</h4>
+                            <div class="friend_list_item">
+                                <img class="friend_list_item_profile" src="./assets/img/backgrounds/pet1.jpg">
+                                <div class="friend_list_item_name">뽀삐</div>
+                                <div class="friend_list_item_sex"><img src="./assets/img/backgrounds/woman.png"></div>
+                                <div class="friend_list_item_age">2살</div>
+                                <div class="friend_list_item_size">소형견</div>
 
-                            <div id="makeFriends_map"ng-controller="mapCtrl">
-                              <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-                              <button class="btn btn-map" ng-click="postcode()">우편번호 찾기</button><br>
-                              <div id="map" style="width:100%;height:350px;"></div>
-                              <!-- <div id="map2" ng-show="!isCurrentPosition" style="width:100%;height:350px;"></div> -->
-                              <span id="guide" style="color:#999"></span>
-                              <p id="clickLatlng"><p>
-                              <button class="btn map_bottom_button" ng-click="searchCurrentPosition()">현재위치 찾기</button>
-                              <button class="btn map_bottom_button" ng-click="search_freinds()">친구 검색</button>
+                                <button class="btn friend_result_bottom_button" ng-click="">친구 추가</button>
                             </div>
-                          </form>
+                            <div class="friend_list_item">
+                                <img class="friend_list_item_profile" src="./assets/img/backgrounds/pet3.jpg">
+                                <div class="friend_list_item_name">솜사탕</div>
+                                <div class="friend_list_item_sex"><img src="./assets/img/backgrounds/man.png"></div>
+                                <div class="friend_list_item_age">1살</div>
+                                <div class="friend_list_item_size">소형견</div>
+
+                                <button class="btn friend_result_bottom_button" ng-click="">친구 추가</button>
+                            </div>
+                            <div class="friend_list_item">
+                                <img class="friend_list_item_profile" src="./assets/img/backgrounds/pet4.jpg">
+                                <div class="friend_list_item_name">피글렛</div>
+                                <div class="friend_list_item_sex"><img src="./assets/img/backgrounds/woman.png"></div>
+                                <div class="friend_list_item_age">3살</div>
+                                <div class="friend_list_item_size">소형견</div>
+
+                                <button class="btn friend_result_bottom_button" ng-click="">친구 추가</button>
+                            </div>
+                            <div class="friend_list_item">
+                                <img class="friend_list_item_profile" src="./assets/img/backgrounds/pet2.jpg">
+                                <div class="friend_list_item_name">핑구</div>
+                                <div class="friend_list_item_sex"><img src="./assets/img/backgrounds/man.png"></div>
+                                <div class="friend_list_item_age">4살</div>
+                                <div class="friend_list_item_size">소형견</div>
+
+                                <button class="btn friend_result_bottom_button" ng-click="">친구 추가</button>
+                            </div>
+
                         </div>
                        </div>
 

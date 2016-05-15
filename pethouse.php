@@ -116,7 +116,8 @@
                               <div class="panel-body">
                                 <div class="pet_name">{{a.animalName}}</div>
                                 <div class="pet_sex">
-                                  <img src="./assets/img/backgrounds/pet_woman.png" width="25px" height="30px">
+     
+                                  <img src="./assets/img/backgrounds/man.png" width="30px" height="30px">
                                 </div>
                                 <div class="hidden-xs pet_kind">{{a.animalKind}}({{a.animalDetailKind}})</div>
                                 <div class="hidden-xs pet_old">{{a.animalAge}}살</div>

@@ -125,6 +125,14 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		}
 		// 하트 스크립트 (끝)
 
+		// 친구 찾기 스크립트 (시작) *******************************
+
+		$scope.search_freinds = function(){
+			location.href="search_friend_result.php";
+		}
+
+		// 친구 찾기 스크립트 (끝) ********************************
+
 		// 일반 로그인
 		$scope.signin = function () {
 			var ref = new Firebase(temp);
@@ -371,6 +379,10 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 });
 
 
+
+
+
+
  app.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
 
   $scope.items = ['item1', 'item2', 'item3'];
@@ -439,7 +451,9 @@ app.filter('reverse', function() {
 });
 
 
-//map script 시작 
+
+
+//******************** map script 시작 ***********************
 app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $http, $window) {
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     $scope.address = "";
@@ -457,7 +471,7 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
                 var myFirebaseRef = new Firebase("https://petbooksung.firebaseio.com/");
                 myFirebaseRef.child('Addr').set(fullRoadAddr);
               }
-        }).open();searchCurrentPosition
+        }).open(); //searchCurrentPosition
         $scope.findAddr();
       }
 
