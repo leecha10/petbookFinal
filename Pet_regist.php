@@ -21,6 +21,7 @@
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
+    <script src="assets/js/petbook_script.js" type="text/javascript"></script>
 
 	</head>
 <body ng-app="PB" ng-controller="Ctrl">
@@ -145,10 +146,15 @@
                                     </div>
                                     <input type="hidden" ng-model="id" type="text" value="{{owner}}">
 
-
-
-
-
+                                    <div id="petregist_map"ng-controller="mapCtrl">
+                                      <label id="pet_position_label"for="pet_position">위치 등록</label>
+                                      <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+                                      <button class="btn btn-map" ng-click="postcode()">우편번호 찾기</button><br>
+                                      <div id="map" style="width:100%;height:350px;"></div>
+                                      <!-- <div id="map2" ng-show="!isCurrentPosition" style="width:100%;height:350px;"></div> -->
+                                      <span id="guide" style="color:#999"></span>
+                                      <p id="clickLatlng"><p>
+                                    </div>
                                   </form>
                               </div>
                               <!-- -->

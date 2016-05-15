@@ -924,3 +924,83 @@ button#btn_goto_regist {
     margin-top: -10px;
   }
 }
+
+#sample4_roadAddress{
+  width: 75%;
+  margin-right: 1%;
+}
+
+#pet_position_label{
+  width: 100%;
+}
+
+.btn-map{
+  background-color: #C05CF3;
+  color: #fff;
+}
+
+#petregist_map>#sample4_roadAddress{
+
+}
+
+/*************** pet regist (끝) *********/
+
+/*************** Make friends (시작) *****************/
+
+#makeFriends_map{
+  margin-top: -40px;
+}
+
+#makeFriends_map>#sample4_roadAddress{
+  visibility: hidden;
+}
+
+
+
+#makeFriends_map>.btn-map{
+  visibility: hidden;
+}
+
+.btn-map:hover{
+  background-color: #7A1BB5;
+  color: white;
+}
+
+#map{
+  margin-top: 15px;
+  border: 3px solid #DE995E;
+  border-radius: 4px;
+}
+
+.map_bottom_button{
+  background-color: #C05CF3;
+  color: #fff;
+  width: 49%;
+}
+
+.map_bottom_button:hover, .map_bottom_button:active{
+  background-color: #7A1BB5;
+  color: white;
+}
+
+@media (max-width: 420px){
+  #sample4_roadAddress{
+    width: 65%;
+  }
+}
+/*************** Make friends (끝)  ******************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

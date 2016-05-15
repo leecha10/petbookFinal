@@ -22,7 +22,11 @@
     <script src="assets/js/angularfire.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
+    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a8357d42d4e90b66009f8677b47908c3&libraries=services"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script src="assets/js/petbook_script.js"></script>
+
+
 
   </head>
 <body ng-app="PB" ng-controller="Ctrl">
@@ -104,7 +108,16 @@
                           <form class="form-horizontal" role="form">
                             <h4>Make freind for your pet</h4>
 
-        
+                            <div id="makeFriends_map"ng-controller="mapCtrl">
+                              <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+                              <button class="btn btn-map" ng-click="postcode()">우편번호 찾기</button><br>
+                              <div id="map" style="width:100%;height:350px;"></div>
+                              <!-- <div id="map2" ng-show="!isCurrentPosition" style="width:100%;height:350px;"></div> -->
+                              <span id="guide" style="color:#999"></span>
+                              <p id="clickLatlng"><p>
+                              <button class="btn map_bottom_button" ng-click="searchCurrentPosition()">현재위치 찾기</button>
+                              <button class="btn map_bottom_button" ng-click="">친구 검색</button>
+                            </div>
                           </form>
                         </div>
                        </div>
