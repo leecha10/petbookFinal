@@ -9,6 +9,7 @@ var name;
 var picture;
 var animalid;
 var data = new Array();
+var fullRoadAddr;
 
 
 // facebook 로그인 유지
@@ -55,7 +56,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       //console.log(name);
       //console.log(picture);
 
-      firebaseURL = firebaseURL + owner;
+      firebaseURL = temp + owner;
       //console.log(firebaseURL);
 
       // 로그인 되었을 때 이름과 프로필 사진을 firebase에 저장 후 사람 타임라인 post 준비 (ex: firebaseURL/123456/posts)
@@ -329,7 +330,10 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
           animalFavoriteFood: $scope.animalFavoriteFood,
           animalCharacter: $scope.animalCharacter,
           animalPhoto: $scope.thumbnail,
-          animalSize: "소"
+          animalSize: "소",
+          animalLat: $scope.lat,
+          animalLng: $scope.lng,
+          animalAdd: fullRoadAddr
         }).then(function() {
           firebaseURL = temp + owner + "/posts";
           //console.log(firebaseURL);
@@ -350,7 +354,10 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
           animalFavoriteFood: $scope.animalFavoriteFood,
           animalCharacter: $scope.animalCharacter,
           animalPhoto: $scope.thumbnail,
-          animalSize: "중"
+          animalSize: "중",
+          animalLat: $scope.lat,
+          animalLng: $scope.lng,
+          animalAdd: fullRoadAddr
         }).then(function() {
           firebaseURL = temp + owner + "/posts";
           //console.log(firebaseURL);
@@ -371,7 +378,10 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
           animalFavoriteFood: $scope.animalFavoriteFood,
           animalCharacter: $scope.animalCharacter,
           animalPhoto: $scope.thumbnail,
-          animalSize: "대"
+          animalSize: "대",
+          animalLat: $scope.lat,
+          animalLng: $scope.lng,
+          animalAdd: fullRoadAddr
         }).then(function() {
           firebaseURL = temp + owner + "/posts";
           //console.log(firebaseURL);
@@ -560,6 +570,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       // do something after logout
       location.href="index.html";
     };
+
 
     //animal key 추출하기
     var ref = new Firebase("https://petbookkdh.firebaseio.com/");
@@ -762,13 +773,17 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
       //주소 찾기 팝업에서 주소 찾아서 firebase에 저장
         new daum.Postcode({
             oncomplete: function(data) {
-                var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+                fullRoadAddr = data.roadAddress; // 도로명 주소 변수
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 //document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
                 document.getElementById('sample4_roadAddress').value = fullRoadAddr;
                 var myFirebaseRef = new Firebase("https://petbookkdh.firebaseio.com/");
+<<<<<<< HEAD
                 myFirebaseRef.child(owner).set(fullRoadAddr);
+=======
+                //myFirebaseRef.child('Addr').set(fullRoadAddr);
+>>>>>>> 0f568f05982cd6ad8f00f4a3febbc3e46f7cb104
               }
         }).open(); //searchCurrentPosition
         $scope.findAddr();
@@ -834,8 +849,8 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
         $scope.lat = response.data.channel.item[0].lat;
         $scope.lng = response.data.channel.item[0].lng;
         var myFirebaseRef = new Firebase("https://petbookkdh.firebaseio.com/");
-        myFirebaseRef.child('lat').set($scope.lat);
-        myFirebaseRef.child('lng').set($scope.lng);
+        //myFirebaseRef.child('lat').set($scope.lat);
+        //myFirebaseRef.child('lng').set($scope.lng);
       }, function myError(response) {
         $scope.myWelcome = response.statusText;
       });
