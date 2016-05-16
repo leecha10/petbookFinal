@@ -176,11 +176,13 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
             console.log(animalkey);
             console.log(childData);
 
+            /*
             if (나랑 같은 동물인가?) {
               if (내 위치를 중심으로 위도, 경도의 일정 범위 안에 있는가?) {
                   data.push([key, animalkey, childData.animalName, childData.animalSize, childData.animalAge, childData.animalPhoto, childData.animalSex])
               }
             }
+            */
 
             });
           });
