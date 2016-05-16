@@ -160,8 +160,34 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     }*/
 
     // 동물 친구 찾는 배열에 데이터 추가
-		$scope.dataInput = function (OwnerId, animalKind, animalName, animalSize, animalAge, animalSex) {
-			data.push([OwnerId, animalKind, animalName, animalSize, animalAge, animalSex]);
+		$scope.dataInput = function () {
+      //animal key 추출하기
+      var ref = new Firebase(temp);
+      ref.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var key = childSnapshot.key(); // ownerID
+        var ref2 = new Firebase(temp);
+        ref2 = ref2.child(key); // temp + ownerID
+        ref2 = ref2.child("animals"); // temp + ownerID + animals
+        ref2.once("value", function(snapshot) {
+          snapshot.forEach(function(childSnapshot) {
+            var animalkey = childSnapshot.key(); // animalKey
+            var childData = childSnapshot.val(); // animalInfo object
+            console.log(animalkey);
+            console.log(childData);
+
+            if (나랑 같은 동물인가?) {
+              if (내 위치를 중심으로 위도, 경도의 일정 범위 안에 있는가?) {
+                  data.push([key, animalkey, childData.animalName, childData.animalSize, childData.animalAge, childData.animalPhoto, childData.animalSex])
+              }
+            }
+
+            });
+          });
+        });
+      });
+
+      data.push([OwnerId, animalKind, animalName, animalSize, animalAge, animalSex]);
 			return true;
 		}
 
@@ -360,24 +386,6 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       // do something after logout
       location.href="index.html";
     };
-
-
-    //animal key 추출하기
-    var ref = new Firebase("https://petbookkdh.firebaseio.com/");
-    ref.once("value", function(snapshot) {
-    snapshot.forEach(function(childSnapshot) {
-      var key = childSnapshot.key();
-      var ref2 = new Firebase("https://petbookkdh.firebaseio.com/");
-      ref2 = ref2.child(key);
-      ref2 = ref2.child("animals");
-      ref2.once("value", function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-          var key = childSnapshot.key();
-          var childData = childSnapshot.val();
-          });
-        });
-      });
-    });
 
     // this.loadimage에서 호출되는 함수의 일부분
     function saveimage(e1) {
