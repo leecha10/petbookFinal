@@ -12,6 +12,8 @@ var fullRoadAddr;
 var lat;
 var lng;
 var animalid;
+var mylat;
+var mylng;
 
 // facebook 로그인 유지
 app.factory('$localstorage', ['$window', function($window) {
@@ -92,7 +94,9 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     $scope.timeline_pet = $firebaseArray(timeline_pet);
 
     animalid = $localstorage.get("animalid");
-    
+    mylat = $localstorage.get("lat");
+    mylng = $localstorage.get("lng");
+
     // 타임라인 모달 스크립트 (시작)
     // Get the modal
       var modalex = document.getElementById('myModal');
@@ -136,8 +140,12 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
     // 친구 찾기 스크립트 (시작) *******************************
 
-    $scope.search_freinds = function(){
-      location.href="search_friend_result.php";
+    $scope.search_friends = function(){
+      $localstorage.set("lat", mylat);
+      $localstorage.set("lng", mylng);
+
+
+      //location.href="search_friend_result.php";
     }
 
     // 친구 찾기 스크립트 (끝) ********************************
@@ -199,7 +207,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
             console.log(animalkey);
             console.log(childData);
 
-            /*
+            /* 친구 검색 알고리즘
             if (나랑 같은 동물인가?) {
               if (내 위치를 중심으로 위도, 경도의 일정 범위 안에 있는가?) {
                   data.push([key, animalkey, childData.animalName, childData.animalSize, childData.animalAge, childData.animalPhoto, childData.animalSex])
@@ -211,9 +219,6 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
           });
         });
       });
-
-      data.push([OwnerId, animalKind, animalName, animalSize, animalAge, animalSex]);
-			return true;
 		}
 
 		// firebaseURL 안의 내용물 불러오기 (아직 써먹지 않음)
@@ -737,6 +742,11 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
         map.setCenter(locPosition);
         console.log("locPosition",locPosition);
 
+        mylat = locPosition.bb;
+        mylng = locPosition.ab;
+        console.log("lat : " + mylat);
+        console.log("lng : " + mylng);
+
         // 지도에 클릭 이벤트를 등록합니다
         // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
         daum.maps.event.addListener(map, 'click', function(mouseEvent) {
@@ -749,8 +759,13 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
           var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
           message += '경도는 ' + latlng.getLng() + ' 입니다';
           var myFirebaseRef = new Firebase("https://petbookkdh.firebaseio.com/");
-          myFirebaseRef.child('currentLat').set(latlng.getLng());
-          myFirebaseRef.child('currentLng').set(latlng.getLat());
+          //myFirebaseRef.child('currentLat').set(latlng.getLng());
+          //myFirebaseRef.child('currentLng').set(latlng.getLat());
+
+          mylat = latlng.getLat();
+          mylng = latlng.getLng();
+          console.log("lat : " + mylat);
+          console.log("lng : " + mylng);
 
           var resultDiv = document.getElementById('clickLatlng');
           resultDiv.innerHTML = message;

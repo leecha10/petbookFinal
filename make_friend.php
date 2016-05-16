@@ -106,7 +106,7 @@
                       <div class="full col-sm-6 col-sm-offset-0 ">
                         <div class="well" ng-controller="Ctrl" >
                           <form class="form-horizontal" role="form">
-                            <h4>Make freind for your pet</h4>
+                            <h4>Make friend for your pet</h4>
 
                             <div id="makeFriends_map"ng-controller="mapCtrl">
                               <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
@@ -116,7 +116,7 @@
                               <span id="guide" style="color:#999"></span>
                               <p id="clickLatlng"><p>
                               <button class="btn map_bottom_button" ng-click="searchCurrentPosition()">현재위치 찾기</button>
-                              <button class="btn map_bottom_button" ng-click="search_freinds()">친구 검색</button>
+                              <button class="btn map_bottom_button" ng-click="search_friends()">친구 검색</button>
                             </div>
                           </form>
                         </div>
@@ -125,9 +125,9 @@
                       <!-- post contents -->
 
 
-          
 
-                      <!-- post contents end -—>
+
+                      <!-- post contents end -->
 
 
                 </div> <!--/padding -->
