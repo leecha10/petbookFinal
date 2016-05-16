@@ -117,20 +117,21 @@
 
                       <!-- post contents -->
 
-                      <!--
-                      <div ng-repeat="post in timeline | reverse" class="col-sm-6 col-sm-offset-3 ">
+
+                      <div ng-repeat="post in animalinfo | reverse" class="col-sm-6 col-sm-offset-3 ">
                         <div class="well">
+                          {{post}}
                           <div class="post_image">
-                            <img src="{{post.picture}}" width=50 height=50 />
+                            <img src="{{$parent.animalinfo.animalPhoto}}" width=50 height=50 />
                           </div>
                           <div class="post_name">
-                            {{post.name}}
+                            {{$parent.animalinfo.animalName}}
                           </div>
                           <div class="post_time">
                             {{post.time}}
                           </div>
                           <div class="post_content">
-                            {{post.post}}
+                            <img src="{{post.animalPost}}" />
                           </div>
                           <hr>
 
@@ -139,9 +140,9 @@
                             <a ng-click="modalClick()"><i class="glyphicon glyphicon-chat"></i></a>
                           </div>
                         </div>
-                      </div> -->
+                      </div>
 
-                      <!-- post contents end -—>
+                      <!-- post contents end -->
 
 
                 </div> <!--/padding -->

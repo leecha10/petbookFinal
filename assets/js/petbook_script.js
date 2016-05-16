@@ -93,7 +93,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     var animalinfo = new Firebase(animal);
     $scope.animalinfo = $firebaseArray(animalinfo);
 
-    var animalpost = temp + owner + "/animals" + animalid + "/posts";
+    var animalpost = temp + owner + "/animals/" + animalid + "/posts";
     var timeline_pet = new Firebase(animalpost);
     $scope.timeline_pet = $firebaseArray(timeline_pet);
 
@@ -144,7 +144,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       $localstorage.set("lat", mylat);
       $localstorage.set("lng", mylng);
 
-      $scope.dataInput();
+      //$scope.dataInput();
 
       //location.href="search_friend_result.php";
     }
@@ -187,7 +187,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		// 동물 페이지에서 Pet House로 돌아오는 경우 저장하고 있던 animalID 삭제
 		$scope.gotoPethouse = function () {
 			$localstorage.remove("animalid");
-			animal = undefined;
+			animalid = undefined;
 			location.href="pethouse.php";
 		}
 
@@ -396,7 +396,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
             // do something with the login info
             console.log("Authenticated successfully with payload:", authData);
 
-            firebaseURL = firebaseURL + owner;
+            firebaseURL = temp + owner;
             console.log(firebaseURL);
 
             location.href="timeline_page.php";
@@ -611,7 +611,7 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
                 varAddr = fullRoadAddr;
                 var myFirebaseRef = new Firebase("https://petbookkdh.firebaseio.com/");
 
-                myFirebaseRef.child(owner).set(fullRoadAddr);
+                //myFirebaseRef.child(owner).set(fullRoadAddr);
 
                 //myFirebaseRef.child('Addr').set(fullRoadAddr);
 
@@ -773,8 +773,8 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
       });
 
       var myFirebaseRef = new Firebase("https://petbookkdh.firebaseio.com/");
-      myFirebaseRef.child('currentLat').set(locPosition.bb);
-      myFirebaseRef.child('currentLng').set(locPosition.ab);
+      //myFirebaseRef.child('currentLat').set(locPosition.bb);
+      //myFirebaseRef.child('currentLng').set(locPosition.ab);
 
       //$scope.calculateDistance(33.45154683641965,126.57024833224838,33.451550447928945,126.57129160218706);
       //console.log("$scope.distance22",$scope.distance);
