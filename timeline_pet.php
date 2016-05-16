@@ -108,7 +108,7 @@
                                   <img ng-show="uploadPic" class="myImg" id="myImg" src="">
                               </div>
                               <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" ng-click="animalPost()" type="button">Post</button>
-                               <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" style="margin-right:15px" ng-click="cancel()" type="button">cancel</button>
+                              <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" style="margin-right:15px" ng-click="cancel()" type="button">cancel</button>
                               <ul class="list-inline">
                               </ul>
                           </form>
