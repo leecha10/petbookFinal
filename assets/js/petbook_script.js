@@ -11,6 +11,7 @@ var data = new Array();
 var fullRoadAddr;
 var lat;
 var lng;
+var animalid;
 
 // facebook 로그인 유지
 app.factory('$localstorage', ['$window', function($window) {
@@ -179,7 +180,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			animal = undefined;
 			location.href="pethouse.php";
 		}
-    
+
     // 동물 친구 찾는 배열에 데이터 추가
 		$scope.dataInput = function () {
       //animal key 추출하기
