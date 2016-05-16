@@ -49,7 +49,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			//console.log(name);
 			//console.log(picture);
 
-			firebaseURL = firebaseURL + owner;
+			firebaseURL = temp + owner;
 			//console.log(firebaseURL);
 
 			// 로그인 되었을 때 이름과 프로필 사진을 firebase에 저장 후 사람 타임라인 post 준비 (ex: firebaseURL/123456/posts)
@@ -106,7 +106,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 	          }
 	      }*/
 		// 타임라인 모달 스크립트 (끝)
-		
+
 		// 하트 스크립트 (시작)
 		var heart = 0;
 		var heart_image = document.getElementsByClassName("glyphicon-black-heart");
@@ -185,7 +185,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 					animalFavoriteFood: $scope.animalFavoriteFood,
 					animalCharacter: $scope.animalCharacter,
 					animalPhoto: $scope.thumbnail,
-					animalSize: "소"
+					animalSize: "1"
 				}).then(function() {
 					firebaseURL = temp + owner + "/posts";
 					//console.log(firebaseURL);
@@ -206,7 +206,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 					animalFavoriteFood: $scope.animalFavoriteFood,
 					animalCharacter: $scope.animalCharacter,
 					animalPhoto: $scope.thumbnail,
-					animalSize: "중"
+					animalSize: "2"
 				}).then(function() {
 					firebaseURL = temp + owner + "/posts";
 					//console.log(firebaseURL);
@@ -227,7 +227,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 					animalFavoriteFood: $scope.animalFavoriteFood,
 					animalCharacter: $scope.animalCharacter,
 					animalPhoto: $scope.thumbnail,
-					animalSize: "대"
+					animalSize: "3"
 				}).then(function() {
 					firebaseURL = temp + owner + "/posts";
 					//console.log(firebaseURL);
