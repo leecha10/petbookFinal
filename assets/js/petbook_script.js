@@ -171,7 +171,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
 		// 친구 만들기 페이지로 animalID 전달
 		$scope.makeFriend = function () {
-			location.href="make_friend.php"
+			location.href="make_friend.php";
 		}
 
 		// 동물 페이지에서 Pet House로 돌아오는 경우 저장하고 있던 animalID 삭제
