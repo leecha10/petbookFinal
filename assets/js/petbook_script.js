@@ -78,6 +78,10 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       //console.log(firebaseURL);
     }
 
+    animalid = $localstorage.get("animalid");
+    mylat = $localstorage.get("lat");
+    mylng = $localstorage.get("lng");
+
     var def = new Firebase(temp);
     $scope.default = $firebaseArray(def);
 
@@ -89,13 +93,9 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     var animalinfo = new Firebase(animal);
     $scope.animalinfo = $firebaseArray(animalinfo);
 
-    var animalpost = temp+owner+"/animalpost";
+    var animalpost = temp + owner + "/animals" + animalid + "/posts";
     var timeline_pet = new Firebase(animalpost);
     $scope.timeline_pet = $firebaseArray(timeline_pet);
-
-    animalid = $localstorage.get("animalid");
-    mylat = $localstorage.get("lat");
-    mylng = $localstorage.get("lng");
 
     // 타임라인 모달 스크립트 (시작)
     // Get the modal
@@ -144,6 +144,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       $localstorage.set("lat", mylat);
       $localstorage.set("lng", mylng);
 
+      $scope.dataInput();
 
       //location.href="search_friend_result.php";
     }
