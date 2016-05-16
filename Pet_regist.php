@@ -130,7 +130,12 @@
                                     </div>
                                     <div class="form-group half_size">
                                       <label for="input_pet_kind">동물종류</label>
-                                      <input ng-model="animalKind" type="text" class="pet_regist_textarea form-control" id="input_pet_kind" placeholder="pet kind">
+                                      <select id="input_pet_kind" class="pet_regist_textarea form-control" ng-model="animalKind" type="text">
+                                        <option>개</option>
+                                        <option>고양이</option>
+                                        <option>새</option>
+                                        <option>도마뱀</option>
+                                      </select>
                                     </div>
                                     <div class="form-group half_size">
                                       <label for="input_pet_detail_kind">세부종류</label>
