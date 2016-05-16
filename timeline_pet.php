@@ -101,7 +101,7 @@
                       <!-- content -->
                       <div class="full col-sm-6 col-sm-offset-0 ">
                         <div class="well" ng-controller="Ctrl" >
-                          <form class="form-horizontal" role="form">
+                          <form id="file-upload-form" class="form-horizontal" role="form">
                             <h4>Upload your photo!</h4>
                               <div class="form-group" style="padding:14px;">
                                   <div ng-show="!uploadPic" class="button"><input class="file_input_hidden" type="file" ng-model="animalPhoto" id="file-upload" accept="image/*"/></div>

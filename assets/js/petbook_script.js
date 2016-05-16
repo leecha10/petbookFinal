@@ -395,11 +395,12 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
         $scope.timeline_pet.$add({
           animalPost: $scope.thumbnail
         })
-        $scope.uploadPic = false;
+        $scope.cancel();
     };
 
     // 동물 타임라인 포스트 취소하기
     $scope.cancel = function() {
+      document.getElementById("file-upload-form").reset();
       $scope.uploadPic = false;
     }
 
