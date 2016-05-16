@@ -8,6 +8,7 @@ var firebaseURL;
 var name;
 var picture;
 var animalid;
+var data = new Array();
 
 
 // facebook 로그인 유지
@@ -33,7 +34,7 @@ app.factory('$localstorage', ['$window', function($window) {
 
 // 전체 Controller
 app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $localstorage) {
-<<<<<<< HEAD
+
 
     $scope.uploadPic = false;
 
@@ -168,7 +169,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     }
 
     // firebaseURL 안의 내용물 불러오기 (아직 써먹지 않음)
-=======
+
 		// Login 안되어 있을 때는 기본적인 FirebaseURL
 		if (owner == "") firebaseURL = temp;
 		//console.log(firebaseURL);
@@ -289,6 +290,12 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			});
 		}
 
+    // 동물 친구 찾는 배열에 데이터 추가
+		$scope.dataInput = function (OwnerId, animalKind, animalName, animalSize, animalAge, animalSex) {
+			data.push([OwnerId, animalKind, animalName, animalSize, animalAge, animalSex]);
+			return true;
+		}
+
 		// 동물 아이디 저장
 		$scope.animalidInput = function(s) {
 			$localstorage.set("animalid", s);
@@ -298,14 +305,12 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		}
 
 		// firebaseURL 안의 내용물 불러오기 (아직 써먹지 않음)
->>>>>>> ecce7685145aea741d4f1ca61a5c442b2da600c6
     $scope.getList = function() {
       var echoRef = new Firebase(firebaseURL);
       var query = echoRef.orderByChild("url");
       $scope.profileArr = $firebaseArray(query);
     };
 
-<<<<<<< HEAD
     // 입력받은 동물의 이름, 프로필 사진을 firebase에 저장
     $scope.addanimal = function() {
       //console.log($scope.animalName);
@@ -390,7 +395,6 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
     // 사람이 글을 썼을 때 타임라인(posts)에 해당하는 firebase에 글 내용과 시간을 저장 (나머지는 아직 미구현)
 
-=======
 		// 입력받은 동물의 이름, 프로필 사진을 firebase에 저장
 		$scope.addanimal = function() {
 			//console.log($scope.animalName);
@@ -461,7 +465,6 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		};
 
 		// 사람이 글을 썼을 때 타임라인(posts)에 해당하는 firebase에 글 내용과 시간을 저장 (나머지는 아직 미구현)
->>>>>>> ecce7685145aea741d4f1ca61a5c442b2da600c6
     $scope.add = function() {
             var myDate = new Date();
           $scope.profileArr.$add({
