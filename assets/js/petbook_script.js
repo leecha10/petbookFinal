@@ -9,6 +9,8 @@ var name;
 var picture;
 var data = new Array();
 var fullRoadAddr;
+var lat;
+var lng;
 
 // facebook 로그인 유지
 app.factory('$localstorage', ['$window', function($window) {
@@ -202,8 +204,8 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 					animalCharacter: $scope.animalCharacter,
 					animalPhoto: $scope.thumbnail,
 					animalSize: "1",
-          animalLat: $scope.lat,
-          animalLng: $scope.lng,
+          animalLat: lat,
+          animalLng: lng,
           animalAdd: fullRoadAddr
 				}).then(function() {
 					firebaseURL = temp + owner + "/posts";
@@ -226,8 +228,8 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 					animalCharacter: $scope.animalCharacter,
 					animalPhoto: $scope.thumbnail,
 					animalSize: "2",
-          animalLat: $scope.lat,
-          animalLng: $scope.lng,
+          animalLat: lat,
+          animalLng: lng,
           animalAdd: fullRoadAddr
 				}).then(function() {
 					firebaseURL = temp + owner + "/posts";
@@ -250,8 +252,8 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 					animalCharacter: $scope.animalCharacter,
 					animalPhoto: $scope.thumbnail,
 					animalSize: "3",
-          animalLat: $scope.lat,
-          animalLng: $scope.lng,
+          animalLat: lat,
+          animalLng: lng,
           animalAdd: fullRoadAddr
 				}).then(function() {
 					firebaseURL = temp + owner + "/posts";
@@ -635,6 +637,12 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
       }).then(function mySucces(response) {
         $scope.lat = response.data.channel.item[0].lat;
         $scope.lng = response.data.channel.item[0].lng;
+
+        lat = $scope.lat;
+        lng = $scope.lng;
+        console.log(lat);
+        console.log(lng);
+
         var myFirebaseRef = new Firebase("https://petbookkdh.firebaseio.com/");
         //myFirebaseRef.child('lat').set($scope.lat);
         //myFirebaseRef.child('lng').set($scope.lng);
