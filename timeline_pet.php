@@ -56,7 +56,7 @@
                     </form>
                     <ul class="nav navbar-nav">
                       <li>
-                        <a href="pethouse.php"><i class="glyphicon glyphicon-home"></i> Pet house</a>
+                        <a ng-click="gotoPethouse()" href="#"><i class="glyphicon glyphicon-home"></i> Pet house</a>
                       </li>
                       <li>
                         <a href="Pet_regist.php"><i class="glyphicon glyphicon-plus"></i> Pet regist</a>
@@ -82,7 +82,7 @@
                         <div class="hidden-xs"id= "leftsidebar_upper_sm" >
                         <ul class="nav hidden-xs" id="lg-menu">
                           <li class="leftsidebar active"><a href="timeline_pet.php"><i class="glyphicon glyphicon-question"></i> Q&A Line</a></li>
-                          <li class="leftsidebar"><a href="make_friend.php"><i class="glyphicon glyphicon-mate"></i>친구 만들기</a></li>
+                          <li class="leftsidebar"><a ng-click="makeFriend()" href="#"><i class="glyphicon glyphicon-mate"></i>친구 만들기</a></li>
                         </ul>
                         </div>
 

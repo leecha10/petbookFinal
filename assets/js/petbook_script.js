@@ -159,6 +159,27 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       });
     }*/
 
+    // timeline_pet.php에 animalID 전달
+		$scope.animalIDpass = function (id) {
+			animalid = id;
+			console.log(id);
+			$localstorage.set("animalid", animalid);
+
+			location.href="timeline_pet.php";
+		}
+
+		// 친구 만들기 페이지로 animalID 전달
+		$scope.makeFriend = function () {
+			location.href="make_friend.php"
+		}
+
+		// 동물 페이지에서 Pet House로 돌아오는 경우 저장하고 있던 animalID 삭제
+		$scope.gotoPethouse = function () {
+			$localstorage.remove("animalid");
+			animal = undefined;
+			location.href="pethouse.php";
+		}
+    
     // 동물 친구 찾는 배열에 데이터 추가
 		$scope.dataInput = function () {
       //animal key 추출하기
