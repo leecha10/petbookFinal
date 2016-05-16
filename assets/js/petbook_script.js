@@ -561,16 +561,21 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       location.href="index.html";
     };
 
-    //animals key 추출하기
+    //animal key 추출하기
     var ref = new Firebase("https://petbookkdh.firebaseio.com/");
-    ref = ref.child(owner);
-    ref = ref.child("animals");
     ref.once("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
       var key = childSnapshot.key();
-      console.log("key",key);
-      var childData = childSnapshot.val();
-      console.log("childData",childData);
+      var ref2 = new Firebase("https://petbookkdh.firebaseio.com/");
+      ref2 = ref2.child(key);
+      ref2 = ref2.child("animals");
+      ref2.once("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var key = childSnapshot.key();
+          var childData = childSnapshot.val();
+          });
+        });
+      });
     });
 
     // this.loadimage에서 호출되는 함수의 일부분
@@ -763,7 +768,7 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
                 //document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
                 document.getElementById('sample4_roadAddress').value = fullRoadAddr;
                 var myFirebaseRef = new Firebase("https://petbookkdh.firebaseio.com/");
-                myFirebaseRef.child('Addr').set(fullRoadAddr);
+                myFirebaseRef.child(owner).set(fullRoadAddr);
               }
         }).open(); //searchCurrentPosition
         $scope.findAddr();
