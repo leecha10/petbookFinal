@@ -20,8 +20,8 @@
     <script src="assets/js/firebase.js"></script>
     <script src="assets/js/angular.min.js"></script>
     <script src="assets/js/angularfire.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
     <script src="assets/js/petbook_script.js"></script>
 
   </head>

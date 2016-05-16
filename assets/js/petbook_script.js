@@ -91,7 +91,8 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     var timeline_pet = new Firebase(animalpost);
     $scope.timeline_pet = $firebaseArray(timeline_pet);
 
-
+    animalid = $localstorage.get("animalid");
+    
     // 타임라인 모달 스크립트 (시작)
     // Get the modal
       var modalex = document.getElementById('myModal');

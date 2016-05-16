@@ -25,8 +25,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js" ></script>
     <script src="assets/js/petbook_script.js" type="text/javascript"></script>
 
-    <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>-->
-
   </head>
   <body ng-app="PB" ng-controller="Ctrl">
 
