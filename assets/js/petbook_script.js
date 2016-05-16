@@ -750,7 +750,7 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 //document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
                 document.getElementById('sample4_roadAddress').value = fullRoadAddr;
-                var myFirebaseRef = new Firebase("https://petbooksung.firebaseio.com/");
+                var myFirebaseRef = new Firebase("https://petbookkdh.firebaseio.com/");
                 myFirebaseRef.child('Addr').set(fullRoadAddr);
               }
         }).open(); //searchCurrentPosition
@@ -795,7 +795,7 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
     $scope.findAddr = function(){
       $scope.address;
       var address;
-      var ref = new Firebase("https://petbooksung.firebaseio.com/");
+      var ref = new Firebase("https://petbookkdh.firebaseio.com/");
       // putting a console.log here won't work, see below
       $scope.address = ref.on("value", function(snapshot){
         $scope.pointMap(snapshot.val().Addr);
@@ -816,7 +816,7 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
       }).then(function mySucces(response) {
         $scope.lat = response.data.channel.item[0].lat;
         $scope.lng = response.data.channel.item[0].lng;
-        var myFirebaseRef = new Firebase("https://petbooksung.firebaseio.com/");
+        var myFirebaseRef = new Firebase("https://petbookkdh.firebaseio.com/");
         myFirebaseRef.child('lat').set($scope.lat);
         myFirebaseRef.child('lng').set($scope.lng);
       }, function myError(response) {
@@ -885,7 +885,7 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
 
           var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
           message += '경도는 ' + latlng.getLng() + ' 입니다';
-          var myFirebaseRef = new Firebase("https://petbooksung.firebaseio.com/");
+          var myFirebaseRef = new Firebase("https://petbookkdh.firebaseio.com/");
           myFirebaseRef.child('currentLat').set(latlng.getLng());
           myFirebaseRef.child('currentLng').set(latlng.getLat());
 
@@ -893,7 +893,7 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
           resultDiv.innerHTML = message;
       });
 
-      var myFirebaseRef = new Firebase("https://petbooksung.firebaseio.com/");
+      var myFirebaseRef = new Firebase("https://petbookkdh.firebaseio.com/");
       myFirebaseRef.child('currentLat').set(locPosition.bb);
       myFirebaseRef.child('currentLng').set(locPosition.ab);
 
