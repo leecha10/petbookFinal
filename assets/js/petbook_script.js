@@ -561,6 +561,18 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       location.href="index.html";
     };
 
+    //animals key 추출하기
+    var ref = new Firebase("https://petbookkdh.firebaseio.com/");
+    ref = ref.child(owner);
+    ref = ref.child("animals");
+    ref.once("value", function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      var key = childSnapshot.key();
+      console.log("key",key);
+      var childData = childSnapshot.val();
+      console.log("childData",childData);
+    });
+
     // this.loadimage에서 호출되는 함수의 일부분
     function saveimage(e1) {
         var refImg = new Firebase(firebaseURL);
