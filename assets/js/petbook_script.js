@@ -33,6 +33,7 @@ app.factory('$localstorage', ['$window', function($window) {
 
 // 전체 Controller
 app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $localstorage) {
+<<<<<<< HEAD
 
     $scope.uploadPic = false;
 
@@ -167,12 +168,144 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     }
 
     // firebaseURL 안의 내용물 불러오기 (아직 써먹지 않음)
+=======
+		// Login 안되어 있을 때는 기본적인 FirebaseURL
+		if (owner == "") firebaseURL = temp;
+		//console.log(firebaseURL);
+
+		// localstorage의 로그인 데이터를 scope로 불러옴
+		$scope.$authData = $localstorage.get("authData");
+		//console.log($localstorage.get("authData"));
+
+		// 로그인이 되었을 때 계정의 아이디 번호, 이름, 프로필 사진을 가져오고
+		// FirebaseURL을 기본 URL/fbIDNo 로 변경 (ex: firebaseURL/123456)
+		if ( ($localstorage.get("authData") != "undefined") && ($localstorage.get("authData") != undefined) ) {
+			owner = JSON.parse($localstorage.get("authData")).facebook.id;
+			name = JSON.parse($localstorage.get("authData")).facebook.displayName;
+			picture = JSON.parse($localstorage.get("authData")).facebook.profileImageURL;
+			//console.log(name);
+			//console.log(picture);
+
+			firebaseURL = temp + owner;
+			//console.log(firebaseURL);
+
+			// 로그인 되었을 때 이름과 프로필 사진을 firebase에 저장 후 사람 타임라인 post 준비 (ex: firebaseURL/123456/posts)
+			var info = new Firebase(firebaseURL);
+			info.child("info").set({name: name, picture: picture});
+			firebaseURL += "/posts";
+			$scope.info = $firebaseArray(info);
+		}
+
+		// 로그아웃할 때 계정의 아이디 번호를 담아둔 변수 초기화 + firebaseURL을 기본으로 변경
+		else {
+			owner = "";
+			firebaseURL = temp;
+			//$localstorage.set("authData", undefined);
+
+			//console.log(firebaseURL);
+		}
+
+		animalid = $localstorage.get("animalid");
+		//console.log(animalid)
+		//console.log("aid");
+
+		var def = new Firebase(temp);
+		$scope.default = $firebaseArray(def);
+
+		var human = temp + "allpost";
+		var timeline = new Firebase(human);
+		$scope.timeline = $firebaseArray(timeline);
+
+		var animal = temp + owner + "/animals";
+		//console.log(animal);
+		var animalinfo = new Firebase(animal);
+		$scope.animalinfo = $firebaseArray(animalinfo);
+
+		// 타임라인 모달 스크립트 (시작)
+	    // Get the modal
+	      var modalex = document.getElementById('myModal');
+
+	    // When the user clicks the button, open the modal
+	      $scope.modalClick = function() {
+	          modalex.style.display = "block";
+	          console.log("animal");
+	      }
+
+	      // When the user clicks on <span> (x), close the modal
+	      $scope.modalClose = function() {
+	          modalex.style.display = "none";
+	      }
+	      /*
+	      // When the user clicks anywhere outside of the modal, close it
+	      window.onclick = function(event) {
+	          if (event.target == modalex) {
+	              modalex.style.display = "none";
+	          }
+	      }*/
+		// 타임라인 모달 스크립트 (끝)
+
+		// 하트 스크립트 (시작)
+		var heart = 0;
+		var heart_image = document.getElementsByClassName("glyphicon-black-heart");
+
+
+		$scope.heartClick = function($heart_index_byClick){
+			var heart_index= $heart_index_byClick;
+			if(heart == 0){
+				heart_image[heart_index].style.content = "url('assets/ico/red-bone.png')";
+				heart = 1;
+			}
+			else if(heart == 1){
+				heart_image[heart_index].style.content = "url('assets/ico/black-bone.png')";
+				heart = 0;
+			}
+		}
+		// 하트 스크립트 (끝)
+
+		// 친구 찾기 스크립트 (시작) *******************************
+
+		$scope.search_freinds = function(){
+			location.href="search_friend_result.php";
+		}
+
+		// 친구 찾기 스크립트 (끝) ********************************
+
+		// 일반 로그인
+		$scope.signin = function () {
+			var ref = new Firebase(temp);
+			ref.authWithPassword({
+			  email    : $scope.userid,
+			  password : $scope.userpw
+			}, function(error, authData) {
+			  if (error) {
+			    console.log("Login Failed!", error);
+
+			  } else {
+			    console.log("Authenticated successfully with payload:", authData);
+					owner = authData.uid;
+					firebaseURL = temp + owner;
+					//location.href="timeline_page.html";
+			  }
+			});
+		}
+
+		// 동물 아이디 저장
+		$scope.animalidInput = function(s) {
+			$localstorage.set("animalid", s);
+			animalid = $localstorage.get("animalid");
+			//console.log(animalid);
+			location.href="timeline_pet.php";
+		}
+
+		// firebaseURL 안의 내용물 불러오기 (아직 써먹지 않음)
+>>>>>>> ecce7685145aea741d4f1ca61a5c442b2da600c6
     $scope.getList = function() {
       var echoRef = new Firebase(firebaseURL);
       var query = echoRef.orderByChild("url");
       $scope.profileArr = $firebaseArray(query);
     };
 
+<<<<<<< HEAD
     // 입력받은 동물의 이름, 프로필 사진을 firebase에 저장
     $scope.addanimal = function() {
       //console.log($scope.animalName);
@@ -257,6 +390,78 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
     // 사람이 글을 썼을 때 타임라인(posts)에 해당하는 firebase에 글 내용과 시간을 저장 (나머지는 아직 미구현)
 
+=======
+		// 입력받은 동물의 이름, 프로필 사진을 firebase에 저장
+		$scope.addanimal = function() {
+			//console.log($scope.animalName);
+			//console.log($scope.thumbnail);
+			if ($scope.animalWeight < 10) {
+				$scope.animalinfo.$add({
+					animalName: $scope.animalName,
+					animalAge: $scope.animalAge,
+					animalHeight: $scope.animalHeight,
+					animalWeight: $scope.animalWeight,
+					animalSex: $scope.animalSex,
+					animalMarry: $scope.animalMarry,
+					animalFamilly: $scope.animalFamilly,
+					animalKind: $scope.animalKind,
+					animalDetailKind: $scope.animalDetailKind,
+					animalFavoriteFood: $scope.animalFavoriteFood,
+					animalCharacter: $scope.animalCharacter,
+					animalPhoto: $scope.thumbnail,
+					animalSize: "1"
+				}).then(function() {
+					firebaseURL = temp + owner + "/posts";
+					//console.log(firebaseURL);
+					location.href="pethouse.php";
+				});
+			}
+			else if ($scope.animalWeight < 25) {
+				$scope.animalinfo.$add({
+					animalName: $scope.animalName,
+					animalAge: $scope.animalAge,
+					animalHeight: $scope.animalHeight,
+					animalWeight: $scope.animalWeight,
+					animalSex: $scope.animalSex,
+					animalMarry: $scope.animalMarry,
+					animalFamilly: $scope.animalFamilly,
+					animalKind: $scope.animalKind,
+					animalDetailKind: $scope.animalDetailKind,
+					animalFavoriteFood: $scope.animalFavoriteFood,
+					animalCharacter: $scope.animalCharacter,
+					animalPhoto: $scope.thumbnail,
+					animalSize: "2"
+				}).then(function() {
+					firebaseURL = temp + owner + "/posts";
+					//console.log(firebaseURL);
+					location.href="pethouse.php";
+				});
+			}
+			else {
+				$scope.animalinfo.$add({
+					animalName: $scope.animalName,
+					animalAge: $scope.animalAge,
+					animalHeight: $scope.animalHeight,
+					animalWeight: $scope.animalWeight,
+					animalSex: $scope.animalSex,
+					animalMarry: $scope.animalMarry,
+					animalFamilly: $scope.animalFamilly,
+					animalKind: $scope.animalKind,
+					animalDetailKind: $scope.animalDetailKind,
+					animalFavoriteFood: $scope.animalFavoriteFood,
+					animalCharacter: $scope.animalCharacter,
+					animalPhoto: $scope.thumbnail,
+					animalSize: "3"
+				}).then(function() {
+					firebaseURL = temp + owner + "/posts";
+					//console.log(firebaseURL);
+					location.href="pethouse.php";
+				});
+			}
+		};
+
+		// 사람이 글을 썼을 때 타임라인(posts)에 해당하는 firebase에 글 내용과 시간을 저장 (나머지는 아직 미구현)
+>>>>>>> ecce7685145aea741d4f1ca61a5c442b2da600c6
     $scope.add = function() {
             var myDate = new Date();
           $scope.profileArr.$add({
