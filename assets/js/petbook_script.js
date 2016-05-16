@@ -14,6 +14,8 @@ var lng;
 var animalid;
 var mylat;
 var mylng;
+var mysize;
+var mykind;
 
 // facebook 로그인 유지
 app.factory('$localstorage', ['$window', function($window) {
@@ -81,6 +83,8 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     animalid = $localstorage.get("animalid");
     mylat = $localstorage.get("lat");
     mylng = $localstorage.get("lng");
+    mysize = $localstorage.get("mysize");
+    mykind = $localstorage.get("mykind");
 
     var def = new Firebase(temp);
     $scope.default = $firebaseArray(def);
@@ -92,11 +96,25 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     var animal = temp + owner + "/animals";
     var animalinfo = new Firebase(animal);
     $scope.animalinfo = $firebaseArray(animalinfo);
+    console.log($scope.animalinfo);
 
     var animalpost = temp + owner + "/animals/" + animalid + "/posts";
     var timeline_pet = new Firebase(animalpost);
     $scope.timeline_pet = $firebaseArray(timeline_pet);
 
+    // 내 동물 비교정보 임시 저장
+    var myanimal = temp + owner + "/animals/" + animalid;
+    var mypet = new Firebase(myanimal);
+    $scope.mypet = $firebaseArray(mypet);
+    mypet.once("value", function(data) {
+      console.log(data.val());
+      $localstorage.set("mysize", data.val().animalSize);
+      $localstorage.set("mykind", data.val().animalKind);
+      mysize = data.val().animalSize;
+      mykind = data.val().animalKind;
+    })
+    console.log(mysize);
+    console.log(mykind);
     // 타임라인 모달 스크립트 (시작)
     // Get the modal
       var modalex = document.getElementById('myModal');
@@ -144,7 +162,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       $localstorage.set("lat", mylat);
       $localstorage.set("lng", mylng);
 
-      //$scope.dataInput();
+      $scope.dataInput();
 
       //location.href="search_friend_result.php";
     }
@@ -188,6 +206,16 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 		$scope.gotoPethouse = function () {
 			$localstorage.remove("animalid");
 			animalid = undefined;
+
+      $localstorage.remove("lat");
+      mylat = undefined;
+      $localstorage.remove("lng");
+      mylng = undefined;
+      $localstorage.remove("mysize");
+      mysize = undefined;
+      $localstorage.remove("mykind");
+      mykind = undefined;
+
 			location.href="pethouse.php";
 		}
 
@@ -196,25 +224,29 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       //animal key 추출하기
       var ref = new Firebase(temp);
       ref.once("value", function(snapshot) {
-      snapshot.forEach(function(childSnapshot) {
-        var key = childSnapshot.key(); // ownerID
-        var ref2 = new Firebase(temp);
-        ref2 = ref2.child(key); // temp + ownerID
-        ref2 = ref2.child("animals"); // temp + ownerID + animals
-        ref2.once("value", function(snapshot) {
-          snapshot.forEach(function(childSnapshot) {
-            var animalkey = childSnapshot.key(); // animalKey
-            var childData = childSnapshot.val(); // animalInfo object
-            console.log(animalkey);
-            console.log(childData);
+        snapshot.forEach(function(childSnapshot) {
+          var key = childSnapshot.key(); // ownerID
+          var ref2 = new Firebase(temp);
+          ref2 = ref2.child(key); // temp + ownerID
+          ref2 = ref2.child("animals"); // temp + ownerID + animals
+          ref2.once("value", function(snapshot) {
+            snapshot.forEach(function(childSnapshot) {
+              var animalkey = childSnapshot.key(); // animalKey
+              var childData = childSnapshot.val(); // animalInfo object
+              console.log(animalkey);
+              console.log(childData);
 
-            /* 친구 검색 알고리즘
-            if (나랑 같은 동물인가?) {
-              if (내 위치를 중심으로 위도, 경도의 일정 범위 안에 있는가?) {
-                  data.push([key, animalkey, childData.animalName, childData.animalSize, childData.animalAge, childData.animalPhoto, childData.animalSex])
+              //$scope.calculateDistance(childData.animalLat, childData.animalLng, mylat, mylng);
+
+              // 친구 검색 알고리즘
+              if (mykind == childData.animalKind) {
+                if ((mylat-1 <= childData.animalLat) && (childData.animalLat <= mylat+1)) {
+                  if ((mylng-1 <= childData.animalLng) && (childData.animalLng <= mylng+1)) {
+                    data.push([/*distance,*/ key, animalkey, childData.animalName, childData.animalSize, childData.animalAge, childData.animalPhoto, childData.animalSex, childData.animalLat, childData.animalLng]);
+                    console.log(data);
+                  }
+                }
               }
-            }
-            */
 
             });
           });

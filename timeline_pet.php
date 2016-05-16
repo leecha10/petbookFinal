@@ -118,9 +118,9 @@
                       <!-- post contents -->
 
 
-                      <div ng-repeat="post in animalinfo | reverse" class="col-sm-6 col-sm-offset-3 ">
+                      <div ng-repeat="post in timeline_pet | reverse" class="col-sm-6 col-sm-offset-3 ">
                         <div class="well">
-                          {{post}}
+                          <!--{{post}}
                           <div class="post_image">
                             <img src="{{$parent.animalinfo.animalPhoto}}" width=50 height=50 />
                           </div>
@@ -129,7 +129,7 @@
                           </div>
                           <div class="post_time">
                             {{post.time}}
-                          </div>
+                          </div>-->
                           <div class="post_content">
                             <img src="{{post.animalPost}}" />
                           </div>
