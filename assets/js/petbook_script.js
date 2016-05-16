@@ -558,6 +558,7 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     $scope.address = "";
     $scope.distance;
+    var varAddr = "";
 
     $scope.postcode = function() {
       //주소 찾기 팝업에서 주소 찾아서 firebase에 저장
@@ -568,6 +569,7 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 //document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
                 document.getElementById('sample4_roadAddress').value = fullRoadAddr;
+                varAddr = fullRoadAddr;
                 var myFirebaseRef = new Firebase("https://petbookkdh.firebaseio.com/");
 
                 myFirebaseRef.child(owner).set(fullRoadAddr);
@@ -620,8 +622,8 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
       var ref = new Firebase("https://petbookkdh.firebaseio.com/");
       // putting a console.log here won't work, see below
       $scope.address = ref.on("value", function(snapshot){
-        $scope.pointMap(snapshot.val().Addr);
-        $scope.searchCoordinate(snapshot.val().Addr);
+        $scope.pointMap(varAddr);
+        $scope.searchCoordinate(varAddr);
       });
     }
 
