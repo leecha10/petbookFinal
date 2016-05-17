@@ -16,6 +16,7 @@ var mylat;
 var mylng;
 var mysize;
 var mykind;
+var distance;
 
 // facebook 로그인 유지
 app.factory('$localstorage', ['$window', function($window) {
@@ -84,11 +85,13 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     mylng = $localstorage.get("lng");
     mysize = $localstorage.get("mysize");
     mykind = $localstorage.get("mykind");
-
     data = $localstorage.get("friend");
-    //console.log(data);
-    $scope.friendArray = JSON.parse(data);
-    //console.log($scope.friendArray);
+    console.log(data);
+
+    if ((data != undefined) && (data != "undefined")) {
+      $scope.friendArray = JSON.parse(data);
+      //console.log($scope.friendArray);
+    }
 
     var def = new Firebase(temp);
     $scope.default = $firebaseArray(def);
@@ -253,7 +256,8 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
                 if ((mylat-1 <= childData.animalLat) && (childData.animalLat <= mylat+1)) {
                   if ((mylng-1 <= childData.animalLng) && (childData.animalLng <= mylng+1)) {
                     if (animalid != animalkey) {
-                      data.push(/*distance,*/ {"OwnerID":key, "animalID":animalkey, "animalName":childData.animalName, "animalSize":childData.animalSize, "animalAge":childData.animalAge, "animalPhoto":childData.animalPhoto, "animalSex":childData.animalSex, "animalLat":childData.animalLat, "animalLng":childData.animalLng});
+                      distance = calculateDistance(mylat, mylng, childData.animalLat, childData.animalLng);
+                      data.push({"distance":distance, "OwnerID":key, "animalID":animalkey, "animalName":childData.animalName, "animalSize":childData.animalSize, "animalAge":childData.animalAge, "animalPhoto":childData.animalPhoto, "animalSex":childData.animalSex, "animalLat":childData.animalLat, "animalLng":childData.animalLng});
                       $scope.friendArray = data;
                       $localstorage.set("friend", JSON.stringify(data));
                       //console.log($localstorage.get("friend"));
@@ -638,6 +642,19 @@ app.filter('reverse', function() {
   };
 });
 
+//두 좌표의 거리를 계산합니다.
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  var R = 6371; // km
+  var dLat = (lat2-lat1) * window.Math.PI / 180;
+  var dLon = (lon2-lon1) * window.Math.PI / 180;
+  var a = window.Math.sin(dLat/2) * window.Math.sin(dLat/2) +
+          window.Math.cos((lat1) * window.Math.PI / 180) * window.Math.cos((lat2) * window.Math.PI / 180) *
+          window.Math.sin(dLon/2) * window.Math.sin(dLon/2);
+  var c = 2 * window.Math.atan2(window.Math.sqrt(a), window.Math.sqrt(1-a));
+  var d = R * c;
+  return d;
+  //console.log("$scope.distance",$scope.distance);
+}
 //******************** map script 시작 ***********************
 app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $http, $window) {
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -824,21 +841,6 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
 
       //$scope.calculateDistance(33.45154683641965,126.57024833224838,33.451550447928945,126.57129160218706);
       //console.log("$scope.distance22",$scope.distance);
-    }
-
-    //두 좌표의 거리를 계산합니다.
-    $scope.calculateDistance = function(lat1, lon1, lat2, lon2) {
-      $scope.Math = $window.Math;
-      var R = 6371; // km
-      var dLat = (lat2-lat1) * $scope.Math.PI / 180;
-      var dLon = (lon2-lon1) * $scope.Math.PI / 180;
-      var a = $scope.Math.sin(dLat/2) * $scope.Math.sin(dLat/2) +
-              $scope.Math.cos((lat1) * $scope.Math.PI / 180) * $scope.Math.cos((lat2) * $scope.Math.PI / 180) *
-              $scope.Math.sin(dLon/2) * $scope.Math.sin(dLon/2);
-      var c = 2 * $scope.Math.atan2($scope.Math.sqrt(a), $scope.Math.sqrt(1-a));
-      var d = R * c;
-      $scope.distance = d;
-      //console.log("$scope.distance",$scope.distance);
     }
   }
 });
