@@ -103,14 +103,14 @@
                         <div class="well" ng-controller="Ctrl" >
                           <form id="file-upload-form" class="form-horizontal" role="form">
                             <h4>Upload your photo!</h4>
-                              <div class="form-group" style="padding:14px;">
+                              <div class="form-group" style="padding:14px; margin-bottom: 0px;">
                                   <div ng-show="!uploadPic" class="button"><input class="file_input_hidden" type="file" ng-model="animalPhoto" id="file-upload" accept="image/*"/></div>
-                                  <img ng-show="uploadPic" class="myImg" id="myImg" src="">
+                                  <img ng-show="uploadPic" class="myImg" id="myImg" src="" style="width:100%;">
                               </div>
-                              <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" ng-click="animalPost()" type="button">Post</button>
-                              <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" style="margin-right:15px" ng-click="cancel()" type="button">cancel</button>
-                              <ul class="list-inline">
-                              </ul>
+                              <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" ng-click="animalPost()" type="button" style="margin-top: 20px;">Post</button>
+                              <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" style="margin-right:15px; margin-top: 20px;" ng-click="cancel()" type="button">cancel</button>
+                              <!-- <ul class="list-inline">
+                              </ul> -->
                           </form>
                         </div>
                        </div>
