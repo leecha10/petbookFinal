@@ -7,7 +7,7 @@ var temp = "https://petbookkdh.firebaseio.com/";
 var firebaseURL;
 var name;
 var picture;
-var data = new Array();
+var data = [];
 var fullRoadAddr;
 var lat;
 var lng;
@@ -40,7 +40,6 @@ app.factory('$localstorage', ['$window', function($window) {
 
 // 전체 Controller
 app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $localstorage) {
-
 
     $scope.uploadPic = false;
 
@@ -85,6 +84,11 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     mylng = $localstorage.get("lng");
     mysize = $localstorage.get("mysize");
     mykind = $localstorage.get("mykind");
+
+    data = $localstorage.get("friend");
+    //console.log(data);
+    $scope.friendArray = JSON.parse(data);
+    //console.log($scope.friendArray);
 
     var def = new Firebase(temp);
     $scope.default = $firebaseArray(def);
@@ -161,9 +165,12 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       $localstorage.set("lat", mylat);
       $localstorage.set("lng", mylng);
 
+      $localstorage.remove("friend");
+      data = [];
+
       $scope.dataInput();
 
-      //location.href="search_friend_result.php";
+      location.href="search_friend_result.php";
     }
 
     // 친구 찾기 스크립트 (끝) ********************************
@@ -238,15 +245,19 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
               //$scope.calculateDistance(childData.animalLat, childData.animalLng, mylat, mylng);
 
               // 친구 검색 알고리즘
-              /* 1. data를 html 상에 뿌려주기
-               * 2. data를 결과 페이지에 넘겨주기
+              /* 1. data를 html 상에 뿌려주기 - Good
+               * 2. data를 결과 페이지에 넘겨주기 - Testing
                * 3. distance 계산하기
                */
               if (mykind == childData.animalKind) {
                 if ((mylat-1 <= childData.animalLat) && (childData.animalLat <= mylat+1)) {
                   if ((mylng-1 <= childData.animalLng) && (childData.animalLng <= mylng+1)) {
-                    data.push([/*distance,*/ key, animalkey, childData.animalName, childData.animalSize, childData.animalAge, childData.animalPhoto, childData.animalSex, childData.animalLat, childData.animalLng]);
-                    console.log(data);
+                    if (animalid != animalkey) {
+                      data.push(/*distance,*/ {"OwnerID":key, "animalID":animalkey, "animalName":childData.animalName, "animalSize":childData.animalSize, "animalAge":childData.animalAge, "animalPhoto":childData.animalPhoto, "animalSex":childData.animalSex, "animalLat":childData.animalLat, "animalLng":childData.animalLng});
+                      $scope.friendArray = data;
+                      $localstorage.set("friend", JSON.stringify(data));
+                      //console.log($localstorage.get("friend"));
+                    }
                   }
                 }
               }

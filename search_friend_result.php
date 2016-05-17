@@ -145,11 +145,13 @@
                        </div>
 
                       <!-- post contents -->
+                      <div ng-repeat="friend in friendArray">
+                        {{friend}}
+                      </div>
 
 
-          
 
-                      <!-- post contents end -—>
+                      <!-- post contents end -->
 
 
                 </div> <!--/padding -->
