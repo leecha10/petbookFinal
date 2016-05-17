@@ -20,8 +20,8 @@
     <script src="assets/js/firebase.js"></script>
     <script src="assets/js/angular.min.js"></script>
     <script src="assets/js/angularfire.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
     <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a8357d42d4e90b66009f8677b47908c3&libraries=services"></script>
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script src="assets/js/petbook_script.js"></script>
@@ -118,7 +118,7 @@
                               <button class="btn map_bottom_button" ng-click="searchCurrentPosition()">현재위치 찾기</button>
                               <button class="btn map_bottom_button" ng-click="search_friends()">친구 검색</button>
                             </div>
-                          </form>
+                          </form>                          
                         </div>
                        </div>
 

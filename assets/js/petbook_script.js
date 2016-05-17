@@ -96,7 +96,6 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     var animal = temp + owner + "/animals";
     var animalinfo = new Firebase(animal);
     $scope.animalinfo = $firebaseArray(animalinfo);
-    console.log($scope.animalinfo);
 
     var animalpost = temp + owner + "/animals/" + animalid + "/posts";
     var timeline_pet = new Firebase(animalpost);
@@ -107,14 +106,14 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     var mypet = new Firebase(myanimal);
     $scope.mypet = $firebaseArray(mypet);
     mypet.once("value", function(data) {
-      console.log(data.val());
+      //console.log(data.val());
       $localstorage.set("mysize", data.val().animalSize);
       $localstorage.set("mykind", data.val().animalKind);
       mysize = data.val().animalSize;
       mykind = data.val().animalKind;
     })
-    console.log(mysize);
-    console.log(mykind);
+    //console.log(mysize);
+    //console.log(mykind);
     // 타임라인 모달 스크립트 (시작)
     // Get the modal
       var modalex = document.getElementById('myModal');
@@ -233,8 +232,8 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
             snapshot.forEach(function(childSnapshot) {
               var animalkey = childSnapshot.key(); // animalKey
               var childData = childSnapshot.val(); // animalInfo object
-              console.log(animalkey);
-              console.log(childData);
+              //console.log(animalkey);
+              //console.log(childData);
 
               //$scope.calculateDistance(childData.animalLat, childData.animalLng, mylat, mylng);
 
