@@ -238,6 +238,10 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
               //$scope.calculateDistance(childData.animalLat, childData.animalLng, mylat, mylng);
 
               // 친구 검색 알고리즘
+              /* 1. data를 html 상에 뿌려주기
+               * 2. data를 결과 페이지에 넘겨주기
+               * 3. distance 계산하기
+               */
               if (mykind == childData.animalKind) {
                 if ((mylat-1 <= childData.animalLat) && (childData.animalLat <= mylat+1)) {
                   if ((mylng-1 <= childData.animalLng) && (childData.animalLng <= mylng+1)) {
