@@ -104,50 +104,31 @@
                       <div class="full col-sm-6 col-sm-offset-0 ">
                         <div class="well" ng-controller="Ctrl" >
                             <h4 id="friend_result_h4">New friends list</h4>
-                            <div class="friend_list_item">
-                                <img class="friend_list_item_profile" src="./assets/img/backgrounds/pet1.jpg">
-                                <div class="friend_list_item_name">뽀삐</div>
-                                <div class="friend_list_item_sex"><img src="./assets/img/backgrounds/woman.png"></div>
-                                <div class="friend_list_item_age">2살</div>
-                                <div class="friend_list_item_size">소형견</div>
+                            <div ng-repeat="friend in friendArray">
 
-                                <button class="btn friend_result_bottom_button" ng-click="">친구 추가</button>
+
+                              <div class="friend_list_item">
+                                  <img class="friend_list_item_profile" src="{{friend.animalPhoto}}">
+                                  <div class="friend_list_item_name">{{friend.animalName}}</div>
+                                  <div class="friend_list_item_sex">
+                                    <img ng-if="friend.animalSex=='암컷'" src="./assets/img/backgrounds/woman.png">
+                                    <img ng-if="friend.animalSex=='수컷'" src="./assets/img/backgrounds/man.png">
+                                  </div>
+                                  <div class="friend_list_item_age">{{friend.animalAge}}살</div>
+                                  <div class="friend_list_item_size">
+                                    <span ng-if="friend.animalSize==1">소형</span>
+                                    <span ng-if="friend.animalSize==2">중형</span>
+                                    <span ng-if="friend.animalSize==3">대형</span>
+                                  </div>
+
+                                  <button class="btn friend_result_bottom_button" ng-click="">친구 추가</button>
+                              </div>
                             </div>
-                            <div class="friend_list_item">
-                                <img class="friend_list_item_profile" src="./assets/img/backgrounds/pet3.jpg">
-                                <div class="friend_list_item_name">솜사탕</div>
-                                <div class="friend_list_item_sex"><img src="./assets/img/backgrounds/man.png"></div>
-                                <div class="friend_list_item_age">1살</div>
-                                <div class="friend_list_item_size">소형견</div>
-
-                                <button class="btn friend_result_bottom_button" ng-click="">친구 추가</button>
-                            </div>
-                            <div class="friend_list_item">
-                                <img class="friend_list_item_profile" src="./assets/img/backgrounds/pet4.jpg">
-                                <div class="friend_list_item_name">피글렛</div>
-                                <div class="friend_list_item_sex"><img src="./assets/img/backgrounds/woman.png"></div>
-                                <div class="friend_list_item_age">3살</div>
-                                <div class="friend_list_item_size">소형견</div>
-
-                                <button class="btn friend_result_bottom_button" ng-click="">친구 추가</button>
-                            </div>
-                            <div class="friend_list_item">
-                                <img class="friend_list_item_profile" src="./assets/img/backgrounds/pet2.jpg">
-                                <div class="friend_list_item_name">핑구</div>
-                                <div class="friend_list_item_sex"><img src="./assets/img/backgrounds/man.png"></div>
-                                <div class="friend_list_item_age">4살</div>
-                                <div class="friend_list_item_size">소형견</div>
-
-                                <button class="btn friend_result_bottom_button" ng-click="">친구 추가</button>
-                            </div>
-
                         </div>
                        </div>
 
                       <!-- post contents -->
-                      <div ng-repeat="friend in friendArray">
-                        {{friend}}
-                      </div>
+                      
 
 
 
