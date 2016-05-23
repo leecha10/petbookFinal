@@ -21,7 +21,7 @@
     <script src="assets/js/angular.min.js"></script>
     <script src="assets/js/angularfire.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>    
     <script src="assets/js/petbook_script.js"></script>
 
 
@@ -121,7 +121,7 @@
                                     <span ng-if="friend.animalSize==3">대형</span>
                                   </div>
                                   <div>거리 : {{friend.distance}}km</div>
-                                  <button class="btn friend_result_bottom_button" ng-click="request_friends(friend.OwnerID, friend.animalID)">친구 추가</button>
+                                  <button class="btn friend_result_bottom_button" ng-click="request_friends(friend.OwnerID, friend.animalID, friend.animalName, friend.animalPhoto)">친구 추가</button>
                               </div>
                             </div>
                         </div>

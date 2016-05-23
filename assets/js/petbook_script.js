@@ -86,7 +86,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     mysize = $localstorage.get("mysize");
     mykind = $localstorage.get("mykind");
     data = $localstorage.get("friend");
-    console.log(data);
+    //console.log(data);
 
     if ((data != undefined) && (data != "undefined")) {
       $scope.friendArray = JSON.parse(data);
@@ -167,7 +167,6 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     // 하트 스크립트 (끝)
 
     // 친구 찾기 스크립트 (시작) *******************************
-
     $scope.search_friends = function(){
       $localstorage.set("lat", mylat);
       $localstorage.set("lng", mylng);
@@ -179,31 +178,46 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
       location.href="search_friend_result.php";
     }
-
     // 친구 찾기 스크립트 (끝) ********************************
 
     // 친구 추가요청
-    $scope.request_friends = function(oID, aID) {
+    $scope.request_friends = function(oID, aID, aName, aPhoto) {
       var req_friends = temp + owner + "/animals/" + animalid + "/request";
       var req = new Firebase(req_friends);
       $scope.request = $firebaseArray(req);
       $scope.request.$add({
         animal: aID,
-        owner: oID
+        owner: oID,
+        animalName: aName,
+        animalPhoto: aPhoto
       });
 
       var requested = temp + oID + "/animals/" + aID + "/requested";
       var reqed = new Firebase(requested);
       $scope.requested = $firebaseArray(reqed);
-      $scope.requested.$add({
-        animal: animalid,
-        owner: owner
+
+      var myanimalinfo = animalinfo.child(animalid);
+      myanimalinfo.once ("value", function(data) {
+        var myanimaldata = data.val();
+        //tempName = myanimaldata.animalName;
+        //tempKind = myanimaldata.animalDetailKind;
+        //tempPhoto = myanimaldata.animalPhoto;
+        //console.log(typeof(tempName));
+        //console.log(tempKind);
+        $scope.requested.$add({
+          animal: animalid,
+          owner: owner,
+          animalName: myanimaldata.animalName,
+          animalPhoto: myanimaldata.animalPhoto,
+          animalDetailKind: myanimaldata.animalDetailKind
+        });
       });
-      console.log("aid : " + aID);
+      /*console.log("aid : " + aID);
       console.log("oid : " + oID);
       console.log("animalid : " + animalid);
-      console.log("owner : " + owner);
+      console.log("owner : " + owner);*/
     }
+
 
     // 일반 로그인 (미사용)
     /*$scope.signin = function () {
@@ -523,7 +537,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     this.loadimage = function () {
         firebaseURL = temp + owner + "/animals";
         var refImg = new Firebase(firebaseURL);
-        console.log("refImg",refImg);
+        //console.log("refImg",refImg);
         var ImgObj = $firebaseObject(refImg);
         ImgObj.$loaded().then(function (obj) {
             $scope.thumbnail = obj.image;
@@ -534,7 +548,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
             console.log("ERROR", error);
         });
         firebaseURL = temp + owner + "/posts";
-        console.log(firebaseURL);
+        //console.log(firebaseURL);
     };
     this.loadimage();
 
