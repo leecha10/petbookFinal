@@ -178,6 +178,29 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
     // 친구 찾기 스크립트 (끝) ********************************
 
+    // 친구 추가요청
+    $scope.request_friends = function(oID, aID) {
+      var req_friends = temp + owner + "/animals/" + animalid + "/request";
+      var req = new Firebase(req_friends);
+      $scope.request = $firebaseArray(req);
+      $scope.request.$add({
+        animal: aID,
+        owner: oID
+      });
+
+      var requested = temp + oID + "/animals/" + aID + "/requested";
+      var reqed = new Firebase(requested);
+      $scope.requested = $firebaseArray(reqed);
+      $scope.requested.$add({
+        animal: animalid,
+        owner: owner
+      });
+      console.log("aid : " + aID);
+      console.log("oid : " + oID);
+      console.log("animalid : " + animalid);
+      console.log("owner : " + owner);
+    }
+
     // 일반 로그인 (미사용)
     /*$scope.signin = function () {
       var ref = new Firebase(temp);

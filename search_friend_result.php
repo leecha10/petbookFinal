@@ -120,15 +120,15 @@
                                     <span ng-if="friend.animalSize==2">중형</span>
                                     <span ng-if="friend.animalSize==3">대형</span>
                                   </div>
-
-                                  <button class="btn friend_result_bottom_button" ng-click="">친구 추가</button>
+                                  <div>거리 : {{friend.distance}}km</div>
+                                  <button class="btn friend_result_bottom_button" ng-click="request_friends(friend.OwnerID, friend.animalID)">친구 추가</button>
                               </div>
                             </div>
                         </div>
                        </div>
 
                       <!-- post contents -->
-                      
+
 
 
 
