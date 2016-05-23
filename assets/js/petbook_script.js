@@ -108,6 +108,10 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     var timeline_pet = new Firebase(animalpost);
     $scope.timeline_pet = $firebaseArray(timeline_pet);
 
+    var friend_request = temp + owner + "/animals/" + animalid + "/requested";
+    var animal_req = new Firebase(friend_request);
+    $scope.req = $firebaseArray(animal_req);
+
     // 내 동물 비교정보 임시 저장
     var myanimal = temp + owner + "/animals/" + animalid;
     var mypet = new Firebase(myanimal);
