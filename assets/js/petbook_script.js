@@ -295,8 +295,8 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
                * 3. distance 계산하기
                */
               if (mykind == childData.animalKind) {
-                if ((mylat-1 <= childData.animalLat) && (childData.animalLat <= mylat+1)) {
-                  if ((mylng-1 <= childData.animalLng) && (childData.animalLng <= mylng+1)) {
+                if ((mylat-2 <= childData.animalLat) && (childData.animalLat <= mylat+2)) {
+                  if ((mylng-2 <= childData.animalLng) && (childData.animalLng <= mylng+2)) {
                     if (animalid != animalkey) {
                       distance = calculateDistance(mylat, mylng, childData.animalLat, childData.animalLng);
                       data.push({"distance":distance, "OwnerID":key, "animalID":animalkey, "animalName":childData.animalName, "animalSize":childData.animalSize, "animalAge":childData.animalAge, "animalPhoto":childData.animalPhoto, "animalSex":childData.animalSex, "animalLat":childData.animalLat, "animalLng":childData.animalLng});
