@@ -66,7 +66,7 @@
                         <a href="Pet_regist.php"><i class="glyphicon glyphicon-plus"></i> Pet regist</a>
                       </li>
                       <li>
-                        <a href="friend_requested.html"><i class="glyphicon glyphicon-envelope"></i> friend request <div id="request_numb">2</div></a>
+                        <a href="friend_requested.html"><i class="glyphicon glyphicon-envelope"></i> friend request <div id="request_numb">{{req.length}}</div></a>
                       </li>
 
                     </ul>
@@ -121,7 +121,7 @@
                               <button class="btn map_bottom_button" ng-click="searchCurrentPosition()">현재위치 찾기</button>
                               <button class="btn map_bottom_button" ng-click="search_friends()">친구 검색</button>
                             </div>
-                          </form>                          
+                          </form>
                         </div>
                        </div>
 

@@ -21,7 +21,7 @@
     <script src="assets/js/angular.min.js"></script>
     <script src="assets/js/angularfire.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>    
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
     <script src="assets/js/petbook_script.js"></script>
 
 
@@ -64,7 +64,7 @@
                         <a href="Pet_regist.php"><i class="glyphicon glyphicon-plus"></i> Pet regist</a>
                       </li>
                       <li>
-                        <a href="friend_requested.html"><i class="glyphicon glyphicon-envelope"></i> friend request <div id="request_numb"> 2 </div></a>
+                        <a href="friend_requested.html"><i class="glyphicon glyphicon-envelope"></i> friend request <div id="request_numb"> {{req.length}} </div></a>
                       </li>
 
                     </ul>
