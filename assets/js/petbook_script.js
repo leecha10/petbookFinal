@@ -171,20 +171,20 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
     // 친구 추가요청
     var clicked = 0;
-    var request_button = document.getElementsByClassName("requests_button");
+    var request_button = document.getElementsByClassName("friend_result_bottom_button");
 
     $scope.request_button_function = function($request_index){
       console.log(request_button);
       console.log(clicked);
-      if(clicked== 0){
-        request_button[$request_index].style.backgroundColor="#9D22DC"
-        request_button[$request_index].innerHTML="요청 취소"
-        clicked= 1;
+      if(clicked == 0){
+        request_button[$request_index].style.backgroundColor="#9D22DC";
+        request_button[$request_index].innerHTML="요청 취소";
+        clicked = 1;
       }
-      else if(clicked==1){
-        request_button[$request_index].style.backgroundColor="#C05CF3"
-        request_button[$request_index].innerHTML="친구 요청"
-        clicked= 0;
+      else if(clicked == 1){
+        request_button[$request_index].style.backgroundColor="#C05CF3";
+        request_button[$request_index].innerHTML="친구 추가";
+        clicked = 0;
       }
     }
 
@@ -251,16 +251,20 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       // delete request (requested는 remove로 쉽게 제거 가능)
       var req_remove = temp + oID + "/animals/" + aID + "/request";
       var reqR = new Firebase(req_remove);
+      $scope.reqR = $firebaseArray(reqR);
       reqR.once("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
           var key = childSnapshot.key(); // animalKey
           var childData = childSnapshot.val(); // animalInfo object
+          //console.log(childData);
+          //console.log(childData.owner);
+          //console.log(owner);
+          //console.log(childData.animal);
+          //console.log(animalid);
+          //console.log(key);
 
-          if ((childData.owner == oID) && (childData.animal == aID)) {
-            console.log(reqR);
-            console.log(key);
+          if ((childData.owner == owner) && (childData.animal == animalid)) {
             reqR = reqR.child(key);
-            console.log(reqR);
             reqR.remove();
           }
         });
@@ -270,16 +274,22 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     // 친구 추가 취소
     $scope.friend_cancel = function(oID, aID) {
       // delete request (requested는 remove로 쉽게 제거 가능)
-      var req_remove = temp + oID + "/animals/" + aID + "/requested";
+      var req_remove = temp + oID + "/animals/" + aID + "/request";
       var reqR = new Firebase(req_remove);
+      $scope.reqR = $firebaseArray(reqR);
       reqR.once("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
           var key = childSnapshot.key(); // animalKey
           var childData = childSnapshot.val(); // animalInfo object
+          //console.log(childData);
+          //console.log(childData.owner);
+          //console.log(owner);
+          //console.log(childData.animal);
+          //console.log(animalid);
+          //console.log(key);
 
-          if ((childData.owner == oID) && (childData.animal == aID)) {
+          if ((childData.owner == owner) && (childData.animal == animalid)) {
             reqR = reqR.child(key);
-            console.log(reqR);
             reqR.remove();
           }
         });
