@@ -122,10 +122,10 @@
                                     <span ng-if="friend.animalSize==3">대형</span>
                                   </div>
                                   <div>거리 : {{friend.distance}}km</div>
-                                  <button class="btn friend_result_bottom_button" ng-click="request_friends(friend.OwnerID, friend.animalID, friend.animalName, friend.animalPhoto)">친구 추가</button>
+                                  <button class="btn friend_result_bottom_button" ng-click="request_button_function($index); request_friends(friend.OwnerID, friend.animalID, friend.animalName, friend.animalPhoto)">친구 추가</button>
                               </div>
                             </div>
-
+                            <!--
                             <div class="friend_list_item">
                                   <img class="friend_list_item_profile" src="./assets/img/backgrounds/pet1.jpg">
                                   <div class="friend_list_item_name">뽀삐</div>
@@ -140,9 +140,8 @@
                                     <span ng-if="friend.animalSize==3">대형</span>
                                   </div>
                                   <div class="friend_list_item_distance">6km 근처</div>
-                                  <!--<button class="btn friend_result_bottom_button" ng-click="<request_friends(friend.OwnerID, friend.animalID, friend.animalName, friend.animalPhoto)">친구 요청</button>-->
                                   <button class="btn friend_result_bottom_button" id="requests_button" ng-click="request_button_function()">친구 요청</button>
-                              </div>
+                              </div>-->
                         </div>
                        </div>
 

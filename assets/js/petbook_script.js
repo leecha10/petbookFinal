@@ -171,20 +171,19 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
     // 친구 추가요청
     var clicked = 0;
-    var request_button = document.getElementById("requests_button");
+    var request_button = document.getElementsByClassName("requests_button");
 
-    $scope.request_button_function = function(){
+    $scope.request_button_function = function($request_index){
       console.log(request_button);
       console.log(clicked);
-
       if(clicked== 0){
-        request_button.style.backgroundColor="#9D22DC"
-        request_button.innerHTML="요청 취소"
+        request_button[$request_index].style.backgroundColor="#9D22DC"
+        request_button[$request_index].innerHTML="요청 취소"
         clicked= 1;
       }
       else if(clicked==1){
-        request_button.style.backgroundColor="#C05CF3"
-        request_button.innerHTML="친구 요청"
+        request_button[$request_index].style.backgroundColor="#C05CF3"
+        request_button[$request_index].innerHTML="친구 요청"
         clicked= 0;
       }
     }
