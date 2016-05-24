@@ -475,7 +475,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
             picture: picture,
             post: $scope.post,
             //number: animal,
-            time: myDate.getFullYear()+ "년 " +(myDate.getMonth() + 1) + "월 " + myDate.getDate() + "일 " + myDate.getHours() + "시" + myDate.getMinutes()+ "분"
+            time: myDate.getFullYear()+ "년 " +(myDate.getMonth() + 1) + "월 " + myDate.getDate() + "일 " + myDate.getHours() + "시 " + myDate.getMinutes()+ "분"
             //like:
 
       }).then( function() {
@@ -484,7 +484,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
           picture: picture,
           post: $scope.post,
           id: owner,
-          time: myDate.getFullYear()+ "년 " +(myDate.getMonth() + 1) + "월 " + myDate.getDate() + "일 " + myDate.getHours() + "시" + myDate.getMinutes()+ "분"
+          time: myDate.getFullYear()+ "년 " +(myDate.getMonth() + 1) + "월 " + myDate.getDate() + "일 " + myDate.getHours() + "시 " + myDate.getMinutes()+ "분"
         });
 
         $scope.post = "";
