@@ -112,17 +112,6 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     var animal_req = new Firebase(friend_request);
     $scope.req = $firebaseArray(animal_req);
 
-    // 내 동물 비교정보 임시 저장
-    var myanimal = temp + owner + "/animals/" + animalid;
-    var mypet = new Firebase(myanimal);
-    $scope.mypet = $firebaseArray(mypet);
-    mypet.once("value", function(data) {
-      //console.log(data.val());
-      $localstorage.set("mysize", data.val().animalSize);
-      $localstorage.set("mykind", data.val().animalKind);
-      mysize = data.val().animalSize;
-      mykind = data.val().animalKind;
-    })
     //console.log(mysize);
     //console.log(mykind);
     // 타임라인 모달 스크립트 (시작)
@@ -243,6 +232,18 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 			animalid = id;
 			console.log(id);
 			$localstorage.set("animalid", animalid);
+
+      // 내 동물 비교정보 임시 저장
+      var myanimal = temp + owner + "/animals/" + animalid;
+      var mypet = new Firebase(myanimal);
+      $scope.mypet = $firebaseArray(mypet);
+      mypet.once("value", function(data) {
+        //console.log(data.val());
+        $localstorage.set("mysize", data.val().animalSize);
+        $localstorage.set("mykind", data.val().animalKind);
+        mysize = data.val().animalSize;
+        mykind = data.val().animalKind;
+      })
 
 			location.href="timeline_pet.php";
 		}
@@ -541,7 +542,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
         var ImgObj = $firebaseObject(refImg);
         ImgObj.$loaded().then(function (obj) {
             $scope.thumbnail = obj.image;
-            console.log("loaded", $scope.thumbnail);
+            //console.log("loaded", $scope.thumbnail);
             document.getElementById("file-upload").addEventListener('change', saveimage, false);
             //document.getElementById("profileImage").src = obj.image;
         }, function (error) {
