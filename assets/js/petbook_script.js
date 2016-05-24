@@ -218,7 +218,9 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
           owner: owner,
           animalName: myanimaldata.animalName,
           animalPhoto: myanimaldata.animalPhoto,
-          animalDetailKind: myanimaldata.animalDetailKind
+          animalDetailKind: myanimaldata.animalDetailKind,
+          animalSex: myanimaldata.animalSex,
+          animalAge: myanimaldata.animalAge
         });
 
 
@@ -227,6 +229,58 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       console.log("oid : " + oID);
       console.log("animalid : " + animalid);
       console.log("owner : " + owner);*/
+    }
+
+    // 친구 추가 확인
+    $scope.friend_ok = function(oID, aID) {
+      var newFriend = temp + owner + "/animals/" + animalid + "/friends";
+      var newF = new Firebase(newFriend);
+      $scope.friend = $firebaseArray(newF);
+      $scope.friend.$add({
+        owner: oID,
+        animal: aID
+      });
+
+      var newFriend2 = temp + oID + "/animals/" + aID + "/friends";
+      var newF2 = new Firebase(newFriend2);
+      $scope.friend2 = $firebaseArray(newF2);
+      $scope.friend2.$add({
+        owner: owner,
+        animal: animalid
+      });
+
+      // delete request (requested는 remove로 쉽게 제거 가능)
+      var req_remove = temp + oID + "/animals/" + aID + "/requested";
+      var reqR = new Firebase(req_remove);
+      reqR.once("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var key = childSnapshot.key(); // animalKey
+          var childData = childSnapshot.val(); // animalInfo object
+
+          if ((childData.owner == oID) && (childData.animal == aID)) {
+            reqR = reqR.child(key);
+            reqR.remove();
+          }
+        });
+      });
+    }
+
+    // 친구 추가 취소
+    $scope.friend_cancel = function(oID, aID) {
+      // delete request (requested는 remove로 쉽게 제거 가능)
+      var req_remove = temp + oID + "/animals/" + aID + "/requested";
+      var reqR = new Firebase(req_remove);
+      reqR.once("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var key = childSnapshot.key(); // animalKey
+          var childData = childSnapshot.val(); // animalInfo object
+
+          if ((childData.owner == oID) && (childData.animal == aID)) {
+            reqR = reqR.child(key);
+            reqR.remove();
+          }
+        });
+      });
     }
 
 
@@ -443,7 +497,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
             picture: picture,
             post: $scope.post,
             //number: animal,
-            time: myDate.getFullYear()+ "년 " +(myDate.getMonth() + 1) + "월 " + myDate.getDate() + "일 " + myDate.getHours() + "시" + myDate.getMinutes()+ "분"
+            time: myDate.getFullYear()+ "년 " +(myDate.getMonth() + 1) + "월 " + myDate.getDate() + "일 " + myDate.getHours() + "시 " + myDate.getMinutes()+ "분"
             //like:
 
       }).then( function() {
@@ -452,7 +506,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
           picture: picture,
           post: $scope.post,
           id: owner,
-          time: myDate.getFullYear()+ "년 " +(myDate.getMonth() + 1) + "월 " + myDate.getDate() + "일 " + myDate.getHours() + "시" + myDate.getMinutes()+ "분"
+          time: myDate.getFullYear()+ "년 " +(myDate.getMonth() + 1) + "월 " + myDate.getDate() + "일 " + myDate.getHours() + "시 " + myDate.getMinutes()+ "분"
         });
 
         $scope.post = "";
@@ -484,11 +538,19 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       navigator.geolocation.getCurrentPosition(success, error);*/
     };
 
-    // firebase 데이터 삭제 (미사용)
-    $scope.remove = function (url) {
-      $scope.profileArr.$remove(url);
-      $scope.default.$remove(url);
+    // 친구 추가요청 처리. 요청 화면에서 누른 버튼에 따라 friend 데이터 처리 후 request/requested 데이터 삭제
+    $scope.remove = function (url, num) {
+      if (num == 1) {
+        // once로 값 구해서 넣기
+        $scope.friend_ok(oID, aID);
+      }
+      else if (num == 0) {
+        // once로 값 구해서 넣기
+        $scope.friend_cancel(oID, aID);
+      }
 
+      //$scope.request.$remove(url);
+      $scope.requested.$remove(url);
     };
 
     // 페이스북 로그인. 로그인 후 아이디 번호를 owner에 저장한 뒤 홈(timeline_page.html)으로 이동
@@ -911,3 +973,63 @@ app.controller("mapCtrl", function ($scope, $firebaseArray, $firebaseObject, $ht
 });
 
 //map script 끝
+
+//carousel 시작
+app.controller('CarouselDemoCtrl', function ($scope) {
+  $scope.myInterval = 0;
+  $scope.noWrapSlides = false;
+  $scope.active = 0;
+  var slides = $scope.slides = [];
+  var currIndex = 0;
+
+  $scope.addSlide = function() {
+    var newWidth = 600 + slides.length + 1;
+    slides.push({
+      image: 'http://lorempixel.com/' + newWidth + '/300/animals',
+      text: ['융이','쿠스','니나노','인스'][slides.length % 4],
+      id: currIndex++
+    });
+  };
+
+  $scope.randomize = function() {
+    var indexes = generateIndexesArray();
+    assignNewIndexesToSlides(indexes);
+  };
+
+  for (var i = 0; i < 4; i++) {
+    $scope.addSlide();
+  }
+
+  // Randomize logic below
+
+  function assignNewIndexesToSlides(indexes) {
+    for (var i = 0, l = slides.length; i < l; i++) {
+      slides[i].id = indexes.pop();
+    }
+  }
+
+  function generateIndexesArray() {
+    var indexes = [];
+    for (var i = 0; i < currIndex; ++i) {
+      indexes[i] = i;
+    }
+    return shuffle(indexes);
+  }
+
+  // http://stackoverflow.com/questions/962802#962890
+  function shuffle(array) {
+    var tmp, current, top = array.length;
+
+    if (top) {
+      while (--top) {
+        current = Math.floor(Math.random() * (top + 1));
+        tmp = array[current];
+        array[current] = array[top];
+        array[top] = tmp;
+      }
+    }
+
+    return array;
+  }
+});
+//carousel 끝
