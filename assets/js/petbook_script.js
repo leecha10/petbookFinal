@@ -207,6 +207,58 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       console.log("owner : " + owner);*/
     }
 
+    // 친구 추가 확인
+    $scope.friend_ok = function(oID, aID) {
+      var newFriend = temp + owner + "/animals/" + animalid + "/friends";
+      var newF = new Firebase(newFriend);
+      $scope.friend = $firebaseArray(newF);
+      $scope.friend.$add({
+        owner: oID,
+        animal: aID
+      });
+
+      var newFriend2 = temp + oID + "/animals/" + aID + "/friends";
+      var newF2 = new Firebase(newFriend2);
+      $scope.friend2 = $firebaseArray(newF2);
+      $scope.friend2.$add({
+        owner: owner,
+        animal: animalid
+      });
+
+      // delete request (requested는 remove로 쉽게 제거 가능)
+      var req_remove = temp + oID + "/animals/" + aID + "/requested";
+      var reqR = new Firebase(req_remove);
+      reqR.once("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var key = childSnapshot.key(); // animalKey
+          var childData = childSnapshot.val(); // animalInfo object
+
+          if ((childData.owner == oID) && (childData.animal == aID)) {
+            reqR = reqR.child(key);
+            reqR.remove();
+          }
+        });
+      });
+    }
+
+    // 친구 추가 취소
+    $scope.friend_cancel = function(oID, aID) {
+      // delete request (requested는 remove로 쉽게 제거 가능)
+      var req_remove = temp + oID + "/animals/" + aID + "/requested";
+      var reqR = new Firebase(req_remove);
+      reqR.once("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var key = childSnapshot.key(); // animalKey
+          var childData = childSnapshot.val(); // animalInfo object
+
+          if ((childData.owner == oID) && (childData.animal == aID)) {
+            reqR = reqR.child(key);
+            reqR.remove();
+          }
+        });
+      });
+    }
+
 
     // 일반 로그인 (미사용)
     /*$scope.signin = function () {
@@ -462,11 +514,19 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       navigator.geolocation.getCurrentPosition(success, error);*/
     };
 
-    // firebase 데이터 삭제 (미사용)
-    $scope.remove = function (url) {
-      $scope.profileArr.$remove(url);
-      $scope.default.$remove(url);
+    // 친구 추가요청 처리. 요청 화면에서 누른 버튼에 따라 friend 데이터 처리 후 request/requested 데이터 삭제
+    $scope.remove = function (url, num) {
+      if (num == 1) {
+        // once로 값 구해서 넣기
+        $scope.friend_ok(oID, aID);
+      }
+      else if (num == 0) {
+        // once로 값 구해서 넣기
+        $scope.friend_cancel(oID, aID);
+      }
 
+      //$scope.request.$remove(url);
+      $scope.requested.$remove(url);
     };
 
     // 페이스북 로그인. 로그인 후 아이디 번호를 owner에 저장한 뒤 홈(timeline_page.html)으로 이동
