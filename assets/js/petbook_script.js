@@ -176,7 +176,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     $scope.request_button_function = function(){
       console.log(request_button);
       console.log(clicked);
- 
+
       if(clicked== 0){
         request_button.style.backgroundColor="#9D22DC"
         request_button.innerHTML="요청 취소"
@@ -539,7 +539,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     };
 
     // 친구 추가요청 처리. 요청 화면에서 누른 버튼에 따라 friend 데이터 처리 후 request/requested 데이터 삭제
-    $scope.remove = function (url, num) {
+    $scope.remove = function (url, num, oID, aID) {
       if (num == 1) {
         // once로 값 구해서 넣기
         $scope.friend_ok(oID, aID);
@@ -550,7 +550,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       }
 
       //$scope.request.$remove(url);
-      $scope.requested.$remove(url);
+      //$scope.requested.$remove(url);
     };
 
     // 페이스북 로그인. 로그인 후 아이디 번호를 owner에 저장한 뒤 홈(timeline_page.html)으로 이동

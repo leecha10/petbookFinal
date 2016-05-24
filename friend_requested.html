@@ -110,24 +110,23 @@
                         <div class="well" ng-controller="Ctrl" >
                           <form class="form-horizontal" role="form">
                             <h4 id="friend_request_h4">Some pet who want be my friend! </h4>
-                            <div>
-
+                            <div ng-repeat="r in req">
                               <div class="friend_list_item">
-                                <img class="friend_list_item_profile" src="./assets/img/backgrounds/pet1.jpg">
-                                <div class="friend_list_item_name">뽀삐</div>
+                                <img class="friend_list_item_profile" src="{{r.animalPhoto}}">
+                                <div class="friend_list_item_name">{{r.animalName}}</div>
                                 <div class="friend_list_item_sex">
-                                  <img src="./assets/img/backgrounds/woman.png">
-                                  <img ng-if="friend.animalSex=='수컷'" src="./assets/img/backgrounds/man.png">
+                                  <img ng-if="r.animalSex=='암컷'" src="assets/img/backgrounds/woman.png">
+                                  <img ng-if="r.animalSex=='수컷'" src="assets/img/backgrounds/man.png">
                                 </div>
-                                <div class="friend_list_item_age">3살</div>
-                                <div class="request_friend_list_item_detail_kind">말티즈</div>
+                                <div class="friend_list_item_age">{{r.animalAge}}살</div>
+                                <div class="request_friend_list_item_detail_kind">{{r.animalDetailKind}}</div>
                                 <!--<button class="btn friend_result_bottom_button" ng-click="<request_friends(friend.OwnerID, friend.animalID, friend.animalName, friend.animalPhoto)">친구 요청</button>-->
-                                <button class="btn friend_requested_bottom_button_up" ng-click="">거절하기</button>
-                                <button class="btn friend_requested_bottom_button_down" ng-click="">수락하기</button>
+                                <button class="btn friend_requested_bottom_button_up" ng-click="remove(r, 0, r.owner, r.animal)">거절하기</button>
+                                <button class="btn friend_requested_bottom_button_down" ng-click="remove(r, 1, r.owner, r.animal)">수락하기</button>
                               </div>
-                              
+
                             </div>
-                          </form>                          
+                          </form>
                         </div>
                        </div>
 
