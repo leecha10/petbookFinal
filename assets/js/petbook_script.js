@@ -250,7 +250,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
       });
 
       // delete request (requested는 remove로 쉽게 제거 가능)
-      var req_remove = temp + oID + "/animals/" + aID + "/requested";
+      var req_remove = temp + oID + "/animals/" + aID + "/request";
       var reqR = new Firebase(req_remove);
       reqR.once("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
@@ -258,7 +258,10 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
           var childData = childSnapshot.val(); // animalInfo object
 
           if ((childData.owner == oID) && (childData.animal == aID)) {
+            console.log(reqR);
+            console.log(key);
             reqR = reqR.child(key);
+            console.log(reqR);
             reqR.remove();
           }
         });
@@ -277,6 +280,7 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
           if ((childData.owner == oID) && (childData.animal == aID)) {
             reqR = reqR.child(key);
+            console.log(reqR);
             reqR.remove();
           }
         });
@@ -540,21 +544,33 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
 
     // 친구 추가요청 처리. 요청 화면에서 누른 버튼에 따라 friend 데이터 처리 후 request/requested 데이터 삭제
     $scope.remove = function (url, num, oID, aID) {
+      var requested = temp + owner + "/animals/" + animalid + "/requested";
+      var reqed = new Firebase(requested);
+      $scope.requested = $firebaseArray(reqed);
+
       if (num == 1) {
-        // once로 값 구해서 넣기
+        //console.log("ok");
+        reqed.child(url.$id).remove();
+        //console.log(url);
         $scope.friend_ok(oID, aID);
       }
       else if (num == 0) {
-        // once로 값 구해서 넣기
+        //console.log("cancel");
+        reqed.child(url.$id).remove();
+        //console.log(url);
         $scope.friend_cancel(oID, aID);
       }
+      /*var req_friends = temp + owner + "/animals/" + animalid + "/request";
+      var req = new Firebase(req_friends);
+      $scope.request = $firebaseArray(req);
+      */
 
       //$scope.request.$remove(url);
-      //$scope.requested.$remove(url);
+      //console.log(url);
+      //console.log($scope.requested);
     };
 
     // 페이스북 로그인. 로그인 후 아이디 번호를 owner에 저장한 뒤 홈(timeline_page.html)으로 이동
-
     $scope.FBLogin = function () {
       var ref = new Firebase(firebaseURL);
 
