@@ -694,6 +694,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
           window.Math.sin(dLon/2) * window.Math.sin(dLon/2);
   var c = 2 * window.Math.atan2(window.Math.sqrt(a), window.Math.sqrt(1-a));
   var d = R * c;
+  d = Math.floor(d*100)/100;
   return d;
   //console.log("$scope.distance",$scope.distance);
 }
