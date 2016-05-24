@@ -170,7 +170,27 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
     // 친구 찾기 스크립트 (끝) ********************************
 
     // 친구 추가요청
+    var clicked = 0;
+    var request_button = document.getElementById("requests_button");
+
+    $scope.request_button_function = function(){
+      console.log(request_button);
+      console.log(clicked);
+ 
+      if(clicked== 0){
+        request_button.style.backgroundColor="#9D22DC"
+        request_button.innerHTML="요청 취소"
+        clicked= 1;
+      }
+      else if(clicked==1){
+        request_button.style.backgroundColor="#C05CF3"
+        request_button.innerHTML="친구 요청"
+        clicked= 0;
+      }
+    }
+
     $scope.request_friends = function(oID, aID, aName, aPhoto) {
+
       var req_friends = temp + owner + "/animals/" + animalid + "/request";
       var req = new Firebase(req_friends);
       $scope.request = $firebaseArray(req);
@@ -200,6 +220,8 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
           animalPhoto: myanimaldata.animalPhoto,
           animalDetailKind: myanimaldata.animalDetailKind
         });
+
+
       });
       /*console.log("aid : " + aID);
       console.log("oid : " + oID);

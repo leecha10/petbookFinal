@@ -1090,6 +1090,17 @@ button#btn_goto_regist {
   background-color: #7A1BB5;
   color: white;
 }
+
+.friend_list_item_distance{
+  font-size: 11pt;
+  font-weight: bold;
+  width: 15%;
+  float: left;
+  margin-top: 6%;
+}
+
+
+
 @media (min-width: 1100px) and (max-width: 1199px){
   .friend_list_item_name{
   margin-top: 5%;
@@ -1109,6 +1120,10 @@ button#btn_goto_regist {
 
   .friend_result_bottom_button{
       margin-top: 4%;
+  }
+
+  .friend_list_item_distance{
+  margin-top: 5%;
   }
 }
 
@@ -1162,18 +1177,101 @@ button#btn_goto_regist {
     margin-top: 4%;
     margin-right: 1%;
   }
+
+  .friend_list_item_distance{
+    display: none;
+  }
 }
 
 #friend_result_h4{
   margin-bottom: 5%;
 }
-/*************** Search friend result (시작)  ******************/
+
+/*************** Search friend result (끝)  ******************/
 
 
+/******* timeline pet (시작) ***********/
+div#request_numb {
+    padding-left: 6px;
+    float: right;
+    margin-left: 6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: white;
+    color: red;
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+@media (max-width: 420px){
+  div#request_numb {
+      /* float: left; */
+      margin-right: 60%;
+  }
+}
+/******* timeline pet (시작) ***********/
 
 
+/******* friend_requested (시작) ********/
+.friend_requested_bottom_button_up{
+    background-color: #C05CF3;
+    color: #fff;
+    width: 20%;
+    margin-top: 9px;
+    float: right;
+}
 
+.friend_requested_bottom_button_down{
+    background-color: #C05CF3;
+    color: #fff;
+    width: 20%;
+    margin-top: 5px;
+    float: right;
+}
 
+.request_friend_list_item_detail_kind{
+  font-size: 11pt;
+  font-weight: bold;
+  width: 16%;
+  float: left;
+  margin-top: 6%;
+}
+
+  #friend_request_h4{
+  margin-bottom: 30px;
+  }
+
+@media (max-width: 420px){
+  .friend_requested_bottom_button_up{
+    width: 45%;
+    margin-left: 3%;
+    margin-right: 2%;
+    margin-top: 11%;
+  }
+
+  .friend_requested_bottom_button_down{
+      width: 45%;
+      margin-left: 3%;
+      margin-right: 2%;
+      margin-top: 2%;
+
+  }
+  .request_friend_list_item_detail_kind{
+  font-size: 11pt;
+  font-weight: bold;
+  width: 16%;
+  float: left;
+  margin-top: 6%;
+  }
+
+  #friend_request_h4{
+  font-size: 12pt;
+  margin-bottom: 20px;
+  }
+
+}
+/******* friend_requested (끝)  ********/
 
 
 

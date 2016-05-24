@@ -63,6 +63,9 @@
                       <li>
                         <a href="Pet_regist.php"><i class="glyphicon glyphicon-plus"></i> Pet regist</a>
                       </li>
+                      <li>
+                        <a href="friend_requested.html"><i class="glyphicon glyphicon-envelope"></i> friend request <div id="request_numb"> 2 </div></a>
+                      </li>
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -105,8 +108,6 @@
                         <div class="well" ng-controller="Ctrl" >
                             <h4 id="friend_result_h4">New friends list</h4>
                             <div ng-repeat="friend in friendArray">
-
-
                               <div class="friend_list_item">
                                   <img class="friend_list_item_profile" src="{{friend.animalPhoto}}">
                                   <div class="friend_list_item_name">{{friend.animalName}}</div>
@@ -124,6 +125,24 @@
                                   <button class="btn friend_result_bottom_button" ng-click="request_friends(friend.OwnerID, friend.animalID, friend.animalName, friend.animalPhoto)">친구 추가</button>
                               </div>
                             </div>
+
+                            <div class="friend_list_item">
+                                  <img class="friend_list_item_profile" src="./assets/img/backgrounds/pet1.jpg">
+                                  <div class="friend_list_item_name">뽀삐</div>
+                                  <div class="friend_list_item_sex">
+                                    <img src="./assets/img/backgrounds/woman.png">
+                                    <img ng-if="friend.animalSex=='수컷'" src="./assets/img/backgrounds/man.png">
+                                  </div>
+                                  <div class="friend_list_item_age">3살</div>
+                                  <div class="friend_list_item_size">
+                                    <span >소형</span>
+                                    <span ng-if="friend.animalSize==2">중형</span>
+                                    <span ng-if="friend.animalSize==3">대형</span>
+                                  </div>
+                                  <div class="friend_list_item_distance">6km 근처</div>
+                                  <!--<button class="btn friend_result_bottom_button" ng-click="<request_friends(friend.OwnerID, friend.animalID, friend.animalName, friend.animalPhoto)">친구 요청</button>-->
+                                  <button class="btn friend_result_bottom_button" id="requests_button" ng-click="request_button_function()">친구 요청</button>
+                              </div>
                         </div>
                        </div>
 

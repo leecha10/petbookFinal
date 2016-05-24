@@ -22,7 +22,11 @@
     <script src="assets/js/angularfire.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
+    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a8357d42d4e90b66009f8677b47908c3&libraries=services"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script src="assets/js/petbook_script.js"></script>
+
+
 
   </head>
 <body ng-app="PB" ng-controller="Ctrl">
@@ -56,13 +60,13 @@
                     </form>
                     <ul class="nav navbar-nav">
                       <li>
-                        <a ng-click="gotoPethouse()" href="#"><i class="glyphicon glyphicon-home"></i> Pet house</a>
+                        <a href="pethouse.php"><i class="glyphicon glyphicon-home"></i> Pet house</a>
                       </li>
                       <li>
                         <a href="Pet_regist.php"><i class="glyphicon glyphicon-plus"></i> Pet regist</a>
                       </li>
                       <li>
-                        <a href="friend_requested.html"><i class="glyphicon glyphicon-envelope"></i> friend request <div id="request_numb"> 2 </div></a>
+                        <a href="friend_requested.html"><i class="glyphicon glyphicon-envelope"></i> friend request <div id="request_numb">2</div></a>
                       </li>
 
                     </ul>
@@ -85,7 +89,7 @@
                         <div class="hidden-xs"id= "leftsidebar_upper_sm" >
                         <ul class="nav hidden-xs" id="lg-menu">
                           <li class="leftsidebar active"><a href="timeline_pet.php"><i class="glyphicon glyphicon-question"></i> Q&A Line</a></li>
-                          <li class="leftsidebar"><a ng-click="makeFriend()" href="#"><i class="glyphicon glyphicon-mate"></i>친구 만들기</a></li>
+                          <li class="leftsidebar"><a href="make_friend.php"><i class="glyphicon glyphicon-mate"></i>친구 만들기</a></li>
                         </ul>
                         </div>
 
@@ -104,46 +108,33 @@
                       <!-- content -->
                       <div class="full col-sm-6 col-sm-offset-0 ">
                         <div class="well" ng-controller="Ctrl" >
-                          <form id="file-upload-form" class="form-horizontal" role="form">
-                            <h4>Upload your photo!</h4>
-                              <div class="form-group" style="padding:14px; margin-bottom: 0px;">
-                                  <div ng-show="!uploadPic" class="button"><input class="file_input_hidden" type="file" ng-model="animalPhoto" id="file-upload" accept="image/*"/></div>
-                                  <img ng-show="uploadPic" class="myImg" id="myImg" src="" style="width:100%;">
+                          <form class="form-horizontal" role="form">
+                            <h4 id="friend_request_h4">Some pet who want be my friend! </h4>
+                            <div>
+
+                              <div class="friend_list_item">
+                                <img class="friend_list_item_profile" src="./assets/img/backgrounds/pet1.jpg">
+                                <div class="friend_list_item_name">뽀삐</div>
+                                <div class="friend_list_item_sex">
+                                  <img src="./assets/img/backgrounds/woman.png">
+                                  <img ng-if="friend.animalSex=='수컷'" src="./assets/img/backgrounds/man.png">
+                                </div>
+                                <div class="friend_list_item_age">3살</div>
+                                <div class="request_friend_list_item_detail_kind">말티즈</div>
+                                <!--<button class="btn friend_result_bottom_button" ng-click="<request_friends(friend.OwnerID, friend.animalID, friend.animalName, friend.animalPhoto)">친구 요청</button>-->
+                                <button class="btn friend_requested_bottom_button_up" ng-click="">거절하기</button>
+                                <button class="btn friend_requested_bottom_button_down" ng-click="">수락하기</button>
                               </div>
-                              <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" ng-click="animalPost()" type="button" style="margin-top: 20px;">Post</button>
-                              <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" style="margin-right:15px; margin-top: 20px;" ng-click="cancel()" type="button">cancel</button>
-                              <!-- <ul class="list-inline">
-                              </ul> -->
-                          </form>
+                              
+                            </div>
+                          </form>                          
                         </div>
                        </div>
 
                       <!-- post contents -->
 
 
-                      <div ng-repeat="post in timeline_pet | reverse" class="col-sm-6 col-sm-offset-3 ">
-                        <div class="well">
-                          <!--{{post}}
-                          <div class="post_image">
-                            <img src="{{$parent.animalinfo.animalPhoto}}" width=50 height=50 />
-                          </div>
-                          <div class="post_name">
-                            {{$parent.animalinfo.animalName}}
-                          </div>
-                          <div class="post_time">
-                            {{post.time}}
-                          </div>-->
-                          <div class="post_content">
-                            <img src="{{post.animalPost}}" />
-                          </div>
-                          <hr>
 
-                          <div>
-                            <a><i class="glyphicon glyphicon-heart-empty"></i></a>
-                            <a ng-click="modalClick()"><i class="glyphicon glyphicon-chat"></i></a>
-                          </div>
-                        </div>
-                      </div>
 
                       <!-- post contents end -->
 
@@ -158,24 +149,6 @@
 </div>
 
 
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span ng-click="modalClose()"class="close">close</span>
-      <h2>Modal Header</h2>
-    </div>
-    <div class="modal-body">
-      <p>Some text in the Modal Body</p>
-      <p>Some other text...</p>
-    </div>
-    <div class="modal-footer">
-      <h3>Modal Footer</h3>
-    </div>
-  </div>
-
-</div>
 
 <!--post modal-->
 

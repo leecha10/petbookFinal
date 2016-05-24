@@ -65,6 +65,9 @@
                       <li>
                         <a href="Pet_regist.php"><i class="glyphicon glyphicon-plus"></i> Pet regist</a>
                       </li>
+                      <li>
+                        <a href="friend_requested.html"><i class="glyphicon glyphicon-envelope"></i> friend request <div id="request_numb">2</div></a>
+                      </li>
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
