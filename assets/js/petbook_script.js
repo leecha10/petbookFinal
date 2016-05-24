@@ -198,7 +198,9 @@ app.controller("Ctrl",function ($scope, $firebaseArray, $firebaseObject, $locals
           owner: owner,
           animalName: myanimaldata.animalName,
           animalPhoto: myanimaldata.animalPhoto,
-          animalDetailKind: myanimaldata.animalDetailKind
+          animalDetailKind: myanimaldata.animalDetailKind,
+          animalSex: myanimaldata.animalSex,
+          animalAge: myanimaldata.animalAge
         });
       });
       /*console.log("aid : " + aID);
