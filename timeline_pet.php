@@ -131,7 +131,7 @@
                             {{post.time}}
                           </div>-->
                           <div class="post_content">
-                            <img src="{{post.animalPost}}" />
+                            <img src="{{post.animalPost}}" style="width:100%;"/>
                           </div>
                           <hr>
 
@@ -157,23 +157,40 @@
 
 <div id="myModal" class="modal">
 
-  <!-- Modal content -->
+<!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">
       <span ng-click="modalClose()"class="close">close</span>
-      <h2>Modal Header</h2>
+      <h2>Reply</h2>
     </div>
     <div class="modal-body">
-      <p>Some text in the Modal Body</p>
-      <p>Some other text...</p>
+      <div ng-controller="CarouselDemoCtrl">
+        <div style="height: 100%;margin-bottom: 20px;">
+          <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+          <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+          <img ng-src="{{slide.image}}" style="margin:auto;">
+          <div class="carousel-caption">
+            <h4>by {{slide.text}}</h4>
+          </div>
+          </uib-slide>
+          </uib-carousel>
+        </div>
+      </div>
     </div>
     <div class="modal-footer">
-      <h3>Modal Footer</h3>
+      <form id="file-upload-form" class="form-horizontal" role="form">
+        <div class="form-group" style="padding:14px; margin-bottom: 0px;">
+          <div ng-show="!uploadPic" class="button">
+            <input class="file_input_hidden" type="file" ng-model="animalPhoto" id="file-upload" accept="image/*"/>
+          </div>
+          <img ng-show="uploadPic" class="myImg" id="myImg" src="" style="width:100%;">
+        </div>
+        <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" ng-click="animalPost()" type="button" style="margin-top: 20px;">Post</button>
+        <button ng-show="uploadPic" class="btn btn-primary pull-right btn_purple" style="margin-right:15px; margin-top: 20px;" ng-click="cancel()" type="button">cancel</button>
+      </form>
     </div>
   </div>
-
 </div>
-
 <!--post modal-->
 
 
